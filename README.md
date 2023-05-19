@@ -1,4 +1,4 @@
-Inspired by [Google's Material Design System](https://m3.material.io/), MaterialCSS is a pure CSS framework. It is designed to be used alone, or 
+Inspired by [Google's Material Design System](https://m3.material.io/), MaterialCss is a pure CSS framework. It is designed to be used alone, or 
 as a core for other frameworks, such as [MaterialVue](https://www.materialvue.com).
 
 # Features
