@@ -23,7 +23,7 @@
       "import": "./dist/lib-es.js",
       "require": "./dist/lib-cjs.cjs"
     },
-    "./dist/sass/*": "./dist/sass/*"
+    "./dist/lib/*": "./dist/lib/*"
   },
   "files": [
     "dist",
