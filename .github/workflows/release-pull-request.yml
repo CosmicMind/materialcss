@@ -1,0 +1,26 @@
+name: Release Pull Request
+
+on:
+  pull_request:
+    branches:
+      - release
+
+jobs:
+  lint:
+    uses: cosmicmind/github-actions/.github/workflows/lint.yml@release
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  codeql:
+    uses: cosmicmind/github-actions/.github/workflows/codeql.yml@release
+  build:
+    uses: cosmicmind/github-actions/.github/workflows/lib-build.yml@release
+    with:
+      BUILD_TARGET: dev
+      NODE_ENV: development
+      VITE_MODE: test
+  test:
+    uses: cosmicmind/github-actions/.github/workflows/lib-build.yml@release
+    with:
+      BUILD_TARGET: test
+      NODE_ENV: development
+      VITE_MODE: test

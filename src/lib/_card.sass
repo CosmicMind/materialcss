@@ -1,0 +1,224 @@
+/**
+ * BSD 3-Clause License
+ *
+ * Copyright © 2023, Daniel Jonathan <daniel at cosmicmind dot com>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from
+ *    this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES LOSS OF USE, DATA, OR PROFITS OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+@use './conversion'
+
+%m-card
+  @extend %is-not-selectable
+
+  padding: 20px 16px
+  position: relative
+  border-radius: 12px
+  outline: none
+
+.m-card
+  @extend %m-card
+
+  &::before
+    content: ' '
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    display: block
+    border-radius: 12px
+
+  > .m-bar
+    margin-top: 24px
+
+  &:disabled:not(.hovered):not(.focused):not(.pressed),
+  &[disabled]:not(.hovered):not(.focused):not(.pressed),
+  &.disabled:not(.hovered):not(.focused):not(.pressed)
+    cursor: not-allowed
+    pointer-events: all !important
+    box-shadow: none
+
+  &.m-elevated
+    &,
+    &.enabled
+      background: var(--elevation-1), rgb(var(--surface))
+      box-shadow: var(--shadow-1)
+
+      &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
+      &.hovered
+        cursor: pointer
+
+        background: var(--elevation-2), rgb(var(--surface))
+        box-shadow: var(--shadow-2)
+
+        &::before
+          background: rgba(var(--on-surface), 8%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
+      &.focused
+        &::before
+          background: rgba(var(--on-surface), 12%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
+      &.pressed
+        &::before
+          background: rgba(var(--on-surface), 12%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
+        background: var(--elevation-3), rgb(var(--surface))
+        box-shadow: var(--shadow-3)
+
+        &::before
+          background: rgba(var(--on-surface), 12%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
+      &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
+      &.disabled:not(.hovered):not(.focused):not(.pressed:not(.dragged))
+        box-shadow: var(--shadow-1)
+
+  &.m-filled
+    &,
+    &.enabled
+      background: rgb(var(--elevation-0)), rgb(var(--surface-variant))
+      box-shadow: rgb(var(--shadow-0))
+
+      *
+        box-shadow: rgb(var(--shadow-0))
+
+      &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
+      &.hovered
+        cursor: pointer
+
+        background: var(--elevation-1), rgb(var(--surface-variant))
+        box-shadow: var(--shadow-1)
+
+        &::before
+          background: rgba(var(--on-surface), 8%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
+      &.focused
+        &::before
+          background: rgba(var(--on-surface), 12%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
+      &.pressed
+        &::before
+          background: rgba(var(--on-surface), 12%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
+        background: var(--elevation-3), rgb(var(--surface-variant))
+        box-shadow: var(--shadow-3)
+
+        &::before
+          background: rgba(var(--on-surface), 12%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+  &.m-outlined
+    border: 1px solid
+
+    &,
+    &.enabled
+      background: rgb(var(--elevation-0)), rgb(var(--surface))
+      border-color: rgb(var(--outline))
+      box-shadow: rgb(var(--shadow-0))
+
+      *
+        box-shadow: rgb(var(--shadow-0))
+
+      &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
+      &.hovered
+        cursor: pointer
+
+        background: var(--elevation-1), rgb(var(--surface))
+        box-shadow: var(--shadow-1)
+
+        &::before
+          background: rgba(var(--on-surface), 8%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
+      &.focused
+        &::before
+          background: rgba(var(--on-surface), 12%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
+      &.pressed
+        &::before
+          background: rgba(var(--on-surface), 12%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+      &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
+        background: var(--elevation-3), rgb(var(--surface))
+        box-shadow: var(--shadow-3)
+
+        &::before
+          background: rgba(var(--on-surface), 12%)
+
+        *
+          box-shadow: rgb(var(--shadow-0))
+
+  &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
+  &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
+  &.disabled:not(.hovered):not(.focused):not(.pressed:not(.dragged))
+    opacity: 38%
+
+    *
+      background: transparent
+
+      box-shadow: rgb(var(--shadow-0))
+      color: var(--on-surface-variant)

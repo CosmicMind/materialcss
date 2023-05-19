@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+ssl
+dist
+coverage
+logs
+.docker
+.fleet
+.idea
+.vscode
+*.local
+*.log
+*.icloud

@@ -1,0 +1,433 @@
+/**
+ * BSD 3-Clause License
+ *
+ * Copyright © 2023, Daniel Jonathan <daniel at cosmicmind dot com>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from
+ *    this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES LOSS OF USE, DATA, OR PROFITS OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+@use 'sass:math'
+
+@use './adaptive'
+@use './conversion'
+
+@mixin with-count($n)
+  @if $n == 1
+    &:first-child:nth-last-child(1)
+      @content
+  @else
+    &:first-child:nth-last-child(#{$n}),
+    &:first-child:nth-last-child(#{$n}) ~ &
+      @content
+
+@mixin nth-child($count)
+  @for $i from 1 through $count
+    @include with-count(#{$i})
+      grid-column: span 1
+
+@mixin grid-column($size, $count)
+  @for $i from 1 through $count
+    &.is-#{$size}#{$i}
+      grid-column: span $i
+
+@mixin flex($size, $count)
+  @for $i from 1 through $count
+    &.is-#{$size}#{$i}
+      flex: $i 0 0
+
+@mixin grid-template-columns($size, $count)
+  @for $i from 1 through $count
+    &.is-#{$size}#{$i}
+      grid-template-columns: repeat($i, 1fr)
+
+%m-layout-flex
+  display: flex
+  flex-flow: column
+
+%m-layout-grid
+  display: grid
+  grid-auto-flow: row
+
+%m-section,
+%m-row,
+%m-column,
+%m-tile
+  &.align-items-start
+    align-items: start
+
+  &.align-items-center
+    align-items: center
+
+  &.align-items-end
+    align-items: end
+
+  &.align-content-start
+    align-content: start
+
+  &.align-content-center
+    align-content: center
+
+  &.align-content-end
+    align-content: end
+
+  &.justify-items-start
+    justify-items: start
+
+  &.justify-items-center
+    justify-items: center
+
+  &.justify-items-end
+    justify-items: end
+
+  &.justify-content-start
+    justify-content: start
+
+  &.justify-content-center
+    justify-content: center
+
+  &.justify-content-end
+    justify-content: end
+
+%m-section-flex
+  @extend %m-section
+
+  display: flex
+  flex-flow: column
+  flex: 1 0 0
+
+%m-section-grid
+  @extend %m-section
+
+  display: grid
+  grid-auto-flow: row
+
+%m-column-flex
+  @extend %m-column
+
+  display: flex
+  flex-flow: column
+  flex: 1 0 0
+
+  @include flex('', 12)
+
+  @include adaptive.is-compact
+    @include flex('compact-', 12)
+
+  @include adaptive.is-gt-compact
+    @include flex('gt-compact-', 12)
+
+  @include adaptive.is-small
+    @include flex('small-', 12)
+
+  @include adaptive.is-gt-small
+    @include flex('gt-small-', 12)
+
+  @include adaptive.is-lt-medium
+    @include flex('lt-medium-', 12)
+
+  @include adaptive.is-medium
+    @include flex('medium-', 12)
+
+  @include adaptive.is-gt-medium
+    @include flex('gt-medium-', 12)
+
+  @include adaptive.is-lt-large
+    @include flex('lt-large-', 12)
+
+  @include adaptive.is-large
+    @include flex('large-', 12)
+
+  @include adaptive.is-gt-large
+    @include flex('gt-large-', 12)
+
+  @include adaptive.is-lt-expanded
+    @include flex('lt-expanded-', 12)
+
+  @include adaptive.is-expanded
+    @include flex('expanded-', 12)
+
+%m-column-grid
+  @extend %m-column
+
+  display: grid
+  grid-auto-flow: row
+
+  @include grid-column('', 12)
+
+  @include adaptive.is-compact
+    @include grid-column('compact-', 12)
+
+  @include adaptive.is-gt-compact
+    @include grid-column('gt-compact-', 12)
+
+  @include adaptive.is-small
+    @include grid-column('small-', 12)
+
+  @include adaptive.is-gt-small
+    @include grid-column('gt-small-', 12)
+
+  @include adaptive.is-lt-medium
+    @include grid-column('lt-medium-', 12)
+
+  @include adaptive.is-medium
+    @include grid-column('medium-', 12)
+
+  @include adaptive.is-gt-medium
+    @include grid-column('gt-medium-', 12)
+
+  @include adaptive.is-lt-large
+    @include grid-column('lt-large-', 12)
+
+  @include adaptive.is-large
+    @include grid-column('large-', 12)
+
+  @include adaptive.is-gt-large
+    @include grid-column('gt-large-', 12)
+
+  @include adaptive.is-lt-expanded
+    @include grid-column('lt-expanded-', 12)
+
+  @include adaptive.is-expanded
+    @include grid-column('expanded-', 12)
+
+%m-tile-grid
+  @extend %m-tile
+
+  display: grid
+  grid-auto-flow: row
+
+%m-row-flex
+  @extend %m-row
+
+  display: flex
+  flex-flow: row
+  flex: 1 0 0
+
+%m-row-grid
+  @extend %m-row
+
+  display: grid
+  grid-template-columns: repeat(auto-fit, minmax(math.div(100, 12) * 1%, 1fr))
+
+  @include grid-template-columns('', 12)
+
+  @include adaptive.is-compact
+    @include grid-template-columns('compact-', 12)
+
+  @include adaptive.is-small
+    @include grid-template-columns('small-', 12)
+
+  @include adaptive.is-medium
+    @include grid-template-columns('medium-', 12)
+
+  @include adaptive.is-large
+    @include grid-template-columns('large-', 12)
+
+  @include adaptive.is-expanded
+    @include grid-template-columns('expanded-', 12)
+
+.m-layout
+  &.m-flex
+    @extend %m-layout-flex
+
+    > .m-section
+      @extend %m-section-flex
+
+      > .m-row
+        @extend %m-row-flex
+
+        > .m-column
+          @extend %m-column-flex
+
+  &.m-grid
+    @extend %m-layout-grid
+
+    > .m-section
+      @extend %m-section-grid
+
+      > .m-row
+        @extend %m-row-grid
+
+        > .m-column
+          @extend %m-column-grid
+
+          > .m-tile
+            @extend %m-tile-grid
+
+    &.m-adaptive
+      @extend %m-adaptive-grid
+
+.is-hidden
+  display: none !important
+
+%m-adaptive-grid
+  @include adaptive.is-compact
+    gap: 48px
+
+    > %m-section-grid
+      margin: 0 16px
+
+      gap: 16px
+
+      > %m-row-grid
+        gap: 16px
+
+        > %m-column-grid
+          gap: 16px
+
+          > %m-tile-grid
+            gap: 16px
+
+  @include adaptive.is-gt-compact
+    gap: 72px
+
+    > %m-section-grid
+      margin: 0 24px
+      gap: 24px
+
+      > %m-row-grid
+        gap: 24px
+
+        > %m-column-grid
+          gap: 24px
+
+          > %m-tile-grid
+            gap: 24px
+
+  @include adaptive.is-gt-medium
+    margin: 0 24px
+    gap: 96px
+
+    > %m-section-grid
+      margin: auto
+      width: 100%
+      max-width: conversion.to-px(adaptive.width(max-medium))
+
+      &.full
+        width: 100%
+        max-width: conversion.to-px(adaptive.width(expanded))
+
+@include adaptive.is-compact
+  .is-gt-compact,
+  .is-small,
+  .is-gt-small,
+  .is-medium,
+  .is-gt-medium,
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-gt-compact
+  .is-compact
+    display: none !important
+
+@include adaptive.is-small
+  .is-compact,
+  .is-lt-small,
+  .is-gt-small,
+  .is-medium,
+  .is-gt-medium,
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-gt-small
+  .is-compact,
+  .is-lt-small,
+  .is-small
+    display: none !important
+
+@include adaptive.is-lt-medium
+  .is-medium,
+  .is-gt-medium,
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-medium
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-gt-medium,
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-gt-medium
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-medium
+    display: none !important
+
+@include adaptive.is-lt-large
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-large
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-medium,
+  .is-lt-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-gt-large
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-medium,
+  .is-lt-large,
+  .is-large
+    display: none !important
+
+@include adaptive.is-lt-expanded
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-expanded
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-medium,
+  .is-lt-large,
+  .is-large,
+  .is-lt-expanded
+    display: none !important

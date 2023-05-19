@@ -1,0 +1,267 @@
+/**
+ * BSD 3-Clause License
+ *
+ * Copyright © 2023, Daniel Jonathan <daniel at cosmicmind dot com>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from
+ *    this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES LOSS OF USE, DATA, OR PROFITS OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  margin: 0
+  width: 100%
+
+p
+  margin: 24px 0
+
+a
+  color: inherit
+  text-decoration: none
+
+  &:hover
+    text-decoration: none
+
+%m-typography
+  @extend %is-selectable
+
+  margin: 0
+  padding: 0
+  font-style: normal
+  font-weight: 400
+  display: block
+
+  color: rgb(var(--on-surface))
+
+  &.text-align-start
+    text-align: start
+
+  &.text-align-center
+    text-align: center
+
+  &.text-align-end
+    text-align: end
+
+%m-typography-display,
+%m-typography-headline,
+%m-typography-title,
+%m-typography-body
+  width: 100%
+
+%m-typography-display,
+%m-typography-headline,
+%m-typography-title,
+%m-typography-label,
+%m-typography-body,
+%m-typography-link
+  vertical-align: baseline
+
+%m-typography-display-large
+  font-size: 57px
+  line-height: 64px
+  letter-spacing: -0.25px
+
+%m-typography-display-medium
+  font-size: 45px
+  line-height: 52px
+
+%m-typography-display-small
+  font-size: 36px
+  line-height: 44px
+
+%m-typography-headline-large
+  font-size: 32px
+  line-height: 40px
+
+%m-typography-headline-medium
+  font-size: 28px
+  line-height: 36px
+
+%m-typography-headline-small
+  font-size: 24px
+  line-height: 32px
+
+%m-typography-title-large
+  font-size: 22px
+  line-height: 28px
+
+%m-typography-title-medium
+  font-size: 16px
+  line-height: 24px
+  letter-spacing: 0.15px
+
+%m-typography-title-small
+  font-size: 14px
+  line-height: 20px
+  letter-spacing: 0.1px
+
+%m-typography-label-large
+  font-size: 14px
+  line-height: 20px
+  letter-spacing: 0.1px
+
+%m-typography-label-medium
+  font-size: 12px
+  line-height: 16px
+  letter-spacing: 0.5px
+
+%m-typography-label-small
+  font-size: 11px
+  line-height: 16px
+  letter-spacing: 0.5px
+
+%m-typography-body-large
+  font-size: 16px
+  line-height: 24px
+  letter-spacing: 0.15px
+
+%m-typography-body-medium
+  font-size: 14px
+  line-height: 20px
+  letter-spacing: 0.25px
+
+%m-typography-body-small
+  font-size: 12px
+  line-height: 16px
+  letter-spacing: 0.4px
+
+%m-typography-link
+  text-decoration: none
+  display: inline-block
+
+  &:hover
+    text-decoration: underline
+
+  color: rgb(var(--primary))
+
+%m-typography-link-large
+  font-size: 16px
+  line-height: 24px
+  letter-spacing: 0.15px
+
+%m-typography-link-medium
+  font-size: 14px
+  line-height: 20px
+  letter-spacing: 0.25px
+
+%m-typography-link-small
+  font-size: 12px
+  line-height: 16px
+  letter-spacing: 0.4px
+
+.m-typography
+  @extend %m-typography
+
+  &.m-display
+    @extend %m-typography-display
+
+    &.large
+      @extend %m-typography-display-large
+
+    &,
+    &.medium
+      @extend %m-typography-display-medium
+
+    &.small
+      @extend %m-typography-display-small
+
+  &.m-headline
+    @extend %m-typography-headline
+
+    &.large
+      @extend %m-typography-headline-large
+
+    &,
+    &.medium
+      @extend %m-typography-headline-medium
+
+    &.small
+      @extend %m-typography-headline-small
+
+  &.m-title
+    @extend %m-typography-title
+
+    &.large
+      @extend %m-typography-title-large
+
+    &,
+    &.medium
+      @extend %m-typography-title-medium
+
+    &.small
+      @extend %m-typography-title-small
+
+    + .m-body
+      margin-top: 16px
+
+  &.m-label
+    @extend %m-typography-label
+
+    &.large
+      @extend %m-typography-label-large
+
+    &,
+    &.medium
+      @extend %m-typography-label-medium
+
+    &.small
+      @extend %m-typography-label-small
+
+    + .m-title
+        margin-top: 16px
+
+  &.m-body
+    @extend %m-typography-body
+
+    &.large
+      @extend %m-typography-body-large
+
+    &,
+    &.medium
+      @extend %m-typography-body-medium
+
+    &.small
+      @extend %m-typography-body-small
+
+    + .m-body
+      margin-top: 16px
+
+  &.m-link
+    @extend %m-typography-link
+
+    &.large
+      @extend %m-typography-link-large
+
+    &,
+    &.medium
+      @extend %m-typography-link-medium
+
+    &.small
+      @extend %m-typography-link-small

@@ -1,0 +1,869 @@
+/**
+ * BSD 3-Clause License
+ *
+ * Copyright © 2023, Daniel Jonathan <daniel at cosmicmind dot com>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from
+ *    this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES LOSS OF USE, DATA, OR PROFITS OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+@use './conversion'
+
+%button
+  @extend %is-not-selectable
+  @extend %is-ellipsis
+
+  padding: 0
+  position: relative
+  display: grid
+  grid-template-columns: [col-1-start] max-content [col-1-end col-2-start] 1fr [col-2-end]
+  place-items: center
+  border: none
+  outline: none
+  background: transparent
+  cursor: pointer
+
+.m-button,
+a.m-button
+  @extend %button
+
+  &::before
+    content: ' '
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    display: block
+
+  > .m-icon
+    grid-column: col-1-start / col-1-end
+
+  > .m-typography
+    @extend %is-not-selectable
+
+    &.m-label
+      @extend %m-typography-label-large
+
+      grid-column: col-2-start / col-2-end
+
+  &:disabled:not(.hovered):not(.focused):not(.pressed),
+  &[disabled]:not(.hovered):not(.focused):not(.pressed),
+  &.disabled:not(.hovered):not(.focused):not(.pressed)
+    cursor: not-allowed
+    pointer-events: all !important
+    box-shadow: none
+
+  &.m-elevated
+    height: 40px
+    border-radius: 20px
+
+    &::before
+      border-radius: 20px
+
+    > .m-icon
+      font-size: 18px
+      padding-left: 16px
+
+      + .m-typography
+        &.m-label
+          padding-left: 8px
+
+    > .m-typography
+      &.m-label
+        padding: 0 24px
+
+    &,
+    &.enabled
+      background: var(--elevation-1), rgb(var(--surface))
+      box-shadow: var(--shadow-1)
+
+      > .m-icon
+        color: rgb(var(--primary))
+
+      > .m-typography
+        &.m-label
+          color: rgb(var(--primary))
+
+      &:hover:not(.focused):not(.pressed):not(.disabled),
+      &.hovered:not(.focused):not(.pressed):not(.disabled)
+        background: var(--elevation-2), rgb(var(--surface))
+        box-shadow: var(--shadow-2)
+
+        &::before
+          background: rgba(var(--primary), 8%)
+
+      &:focus:not(.hovered):not(.pressed):not(.disabled),
+      &.focused:not(.hovered):not(.pressed):not(.disabled)
+        &::before
+          background: rgba(var(--primary), 12%)
+
+      &:active:not(.hovered):not(.focused):not(.disabled),
+      &.pressed:not(.hovered):not(.focused):not(.disabled)
+        &::before
+          background: rgba(var(--primary), 12%)
+
+    &:disabled:not(.hovered):not(.focused):not(.pressed),
+    &[disabled]:not(.hovered):not(.focused):not(.pressed),
+    &.disabled:not(.hovered):not(.focused):not(.pressed)
+      background: rgba(var(--on-surface), 12%)
+      box-shadow: rgb(var(--shadow-0))
+
+      > .m-icon
+        color: rgba(var(--on-surface), 38%)
+
+      > .m-typography
+        &.m-label
+          color: rgba(var(--on-surface), 38%)
+
+  &.m-filled:not(.m-icon)
+    height: 40px
+    border-radius: 20px
+
+    &::before
+      border-radius: 20px
+
+    > .m-icon
+      font-size: 18px
+      padding-left: 16px
+
+      + .m-typography
+        &.m-label
+          padding-left: 8px
+
+    > .m-typography
+      &.m-label
+        padding: 0 24px
+
+    &,
+    &.enabled
+      background: rgb(var(--primary))
+      box-shadow: rgb(var(--shadow-0))
+
+      > .m-icon
+        color: rgb(var(--on-primary))
+
+      > .m-typography
+        &.m-label
+          color: rgb(var(--on-primary))
+
+      &:hover:not(.focused):not(.pressed):not(.disabled),
+      &.hovered:not(.focused):not(.pressed):not(.disabled)
+        background: rgb(var(--primary))
+        box-shadow: var(--shadow-1)
+
+        &::before
+          background: rgba(var(--primary), 8%)
+
+      &:focus:not(.hovered):not(.pressed):not(.disabled),
+      &.focused:not(.hovered):not(.pressed):not(.disabled)
+        &::before
+          background: rgba(var(--on-primary), 12%)
+
+      &:active:not(.hovered):not(.focused):not(.disabled),
+      &.pressed:not(.hovered):not(.focused):not(.disabled)
+        &::before
+          background: rgba(var(--on-primary), 12%)
+
+    &:disabled:not(.hovered):not(.focused):not(.pressed),
+    &[disabled]:not(.hovered):not(.focused):not(.pressed),
+    &.disabled:not(.hovered):not(.focused):not(.pressed)
+      background: rgba(var(--on-surface), 12%)
+
+      > .m-icon
+        color: rgba(var(--on-surface), 38%)
+
+      > .m-typography
+        &.m-label
+          color: rgba(var(--on-surface), 38%)
+
+  &.m-tonal:not(.m-icon)
+    height: 40px
+    border-radius: 20px
+
+    &::before
+      border-radius: 20px
+
+    > .m-icon
+      font-size: 18px
+      padding-left: 16px
+
+      + .m-typography
+        &.m-label
+          padding-left: 8px
+
+    > .m-typography
+      &.m-label
+        padding: 0 24px
+
+    &,
+    &.enabled
+      background: rgb(var(--secondary-container))
+      box-shadow: rgb(var(--shadow-0))
+
+      > .m-icon
+        color: rgb(var(--on-secondary-container))
+
+      > .m-typography
+        &.m-label
+          color: rgb(var(--on-secondary-container))
+
+      &:hover:not(.focused):not(.pressed):not(.disabled),
+      &.hovered:not(.focused):not(.pressed):not(.disabled)
+        background: rgb(var(--secondary-container))
+        box-shadow: var(--shadow-1)
+
+        &::before
+          background: rgba(var(--on-secondary-container), 8%)
+
+      &:focus:not(.hovered):not(.pressed):not(.disabled),
+      &.focused:not(.hovered):not(.pressed):not(.disabled)
+        &::before
+          background: rgba(var(--on-secondary-container), 12%)
+
+      &:active:not(.hovered):not(.focused):not(.disabled),
+      &.pressed:not(.hovered):not(.focused):not(.disabled)
+        &::before
+          background: rgba(var(--on-secondary-container), 12%)
+
+    &:disabled:not(.hovered):not(.focused):not(.pressed),
+    &[disabled]:not(.hovered):not(.focused):not(.pressed),
+    &.disabled:not(.hovered):not(.focused):not(.pressed)
+      background: rgba(var(--on-surface), 12%)
+
+      > .m-icon
+        color: rgba(var(--on-surface), 38%)
+
+      > .m-typography
+        &.m-label
+          color: rgba(var(--on-surface), 38%)
+
+  &.m-outlined:not(.m-icon)
+    height: 40px
+    border-radius: 20px
+    border: 1px solid
+
+    &::before
+      border-radius: 20px
+
+    > .m-icon
+      font-size: 18px
+      padding-left: 16px
+
+      + .m-typography
+        &.m-label
+          padding-left: 8px
+
+    > .m-typography
+      &.m-label
+        padding: 0 24px
+
+    &,
+    &.enabled
+      border-color: rgb(var(--outline))
+
+      > .m-icon
+        color: rgb(var(--primary))
+
+      > .m-typography
+        &.m-label
+          color: rgb(var(--primary))
+
+      &:hover:not(.focused):not(.pressed):not(.disabled),
+      &.hovered:not(.focused):not(.pressed):not(.disabled)
+        &::before
+          background: rgba(var(--primary), 8%)
+
+      &:focus:not(.hovered):not(.pressed):not(.disabled),
+      &.focused:not(.hovered):not(.pressed):not(.disabled)
+        border-color: rgb(var(--primary))
+
+        &::before
+          background: rgba(var(--primary), 12%)
+
+      &:active:not(.hovered):not(.focused):not(.disabled),
+      &.pressed:not(.hovered):not(.focused):not(.disabled)
+        &::before
+          background: rgba(var(--primary), 12%)
+
+    &:disabled:not(.hovered):not(.focused):not(.pressed),
+    &[disabled]:not(.hovered):not(.focused):not(.pressed),
+    &.disabled:not(.hovered):not(.focused):not(.pressed)
+      border-color: rgba(var(--on-surface), 12%)
+
+      > .m-icon
+        color: rgba(var(--on-surface), 38%)
+
+      > .m-typography
+        &.m-label
+          color: rgba(var(--on-surface), 38%)
+
+  &.m-text
+    height: 40px
+    border-radius: 20px
+
+    &::before
+      border-radius: 20px
+
+    > .m-icon
+      font-size: 18px
+      padding-left: 12px
+
+      + .m-typography
+        &.m-label
+          padding-left: 8px
+          padding-right: 16px
+
+    > .m-typography
+      &.m-label
+        padding: 0 12px
+
+    &,
+    &.enabled
+      > .m-icon
+        color: rgb(var(--primary))
+
+      > .m-typography
+        &.m-label
+          color: rgb(var(--primary))
+
+      &:hover:not(.focused):not(.pressed):not(.disabled),
+      &.hovered:not(.focused):not(.pressed):not(.disabled)
+        &::before
+          background: rgba(var(--primary), 8%)
+
+      &:focus:not(.hovered):not(.pressed):not(.disabled),
+      &.focused:not(.hovered):not(.pressed):not(.disabled)
+        &::before
+          background: rgba(var(--primary), 12%)
+
+      &:active:not(.hovered):not(.focused):not(.disabled),
+      &.pressed:not(.hovered):not(.focused):not(.disabled)
+        &::before
+          background: rgba(var(--primary), 12%)
+
+    &:disabled:not(.hovered):not(.focused):not(.pressed),
+    &[disabled]:not(.hovered):not(.focused):not(.pressed),
+    &.disabled:not(.hovered):not(.focused):not(.pressed)
+      > .m-icon
+        color: rgba(var(--on-surface), 38%)
+
+      > .m-typography
+        &.m-label
+          color: rgba(var(--on-surface), 38%)
+
+  &.m-icon
+    width: 48px
+    height: 48px
+    grid-template-columns: [col-1-start] 1fr [col-1-end]
+
+    &::before
+      top: 4px
+      left: 4px
+      bottom: 4px
+      right: 4px
+      border-radius: 20px
+
+    > .m-icon
+      width: 40px
+      height: 40px
+      font-size: 24px
+      border-radius: 20px
+
+    &:not(.m-filled):not(.m-tonal):not(.m-outlined)
+      &,
+      &.enabled
+        > .m-icon
+          color: rgb(var(--on-surface-variant))
+
+        &.toggle
+          > .m-icon
+            color: rgb(var(--on-surface-variant))
+
+          &.selected
+            > .m-icon
+              color: rgb(var(--primary))
+
+        &:hover:not(.focused):not(.pressed):not(.disabled),
+        &.hovered:not(.focused):not(.pressed):not(.disabled)
+          &::before
+            background: rgba(var(--on-surface-variant), 8%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--on-surface-variant), 8%)
+
+            &.selected
+              &::before
+                background: rgba(var(--primary), 8%)
+
+        &:focus:not(.hovered):not(.pressed):not(.disabled),
+        &.focused:not(.hovered):not(.pressed):not(.disabled)
+          &::before
+            background: rgba(var(--on-surface-variant), 12%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--on-surface-variant), 12%)
+
+            &.selected
+              &::before
+                background: rgba(var(--primary), 12%)
+
+        &:active:not(.hovered):not(.focused):not(.disabled),
+        &.pressed:not(.hovered):not(.focused):not(.disabled)
+          &::before
+            background: rgba(var(--on-surface-variant), 12%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--on-surface-variant), 12%)
+
+            &.selected
+              &::before
+                background: rgba(var(--primary), 12%)
+
+      &:disabled:not(.hovered):not(.focused):not(.pressed),
+      &[disabled]:not(.hovered):not(.focused):not(.pressed),
+      &.disabled:not(.hovered):not(.focused):not(.pressed)
+        > .m-icon
+          color: rgba(var(--on-surface), 38%)
+
+    &.m-filled
+      &,
+      &.enabled
+        > .m-icon
+          background: rgb(var(--primary))
+          color: rgb(var(--on-primary))
+
+        &.toggle
+          > .m-icon
+            background: rgb(var(--surface-variant))
+            color: rgb(var(--primary))
+
+          &.selected
+            > .m-icon
+              background: rgb(var(--primary))
+              color: rgb(var(--on-primary))
+
+        &:hover:not(.focused):not(.pressed):not(.disabled),
+        &.hovered:not(.focused):not(.pressed):not(.disabled)
+          &::before
+            background: rgba(var(--on-primary), 8%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--primary), 8%)
+
+            &.selected
+              &::before
+                background: rgba(var(--on-primary), 8%)
+
+        &:focus:not(.hovered):not(.pressed):not(.disabled),
+        &.focused:not(.hovered):not(.pressed):not(.disabled)
+          &::before
+            background: rgba(var(--on-primary), 12%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--primary), 12%)
+
+            &.selected
+              &::before
+                background: rgba(var(--on-primary), 12%)
+
+        &:active:not(.hovered):not(.focused):not(.disabled),
+        &.pressed:not(.hovered):not(.focused):not(.disabled)
+          &::before
+            background: rgba(var(--on-primary), 12%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--primary), 12%)
+
+            &.selected
+              &::before
+                background: rgba(var(--on-primary), 12%)
+
+      &:disabled:not(.hovered):not(.focused):not(.pressed),
+      &[disabled]:not(.hovered):not(.focused):not(.pressed),
+      &.disabled:not(.hovered):not(.focused):not(.pressed)
+        > .m-icon
+          background: rgba(var(--on-surface), 12%)
+          color: rgba(var(--on-surface), 38%)
+
+    &.m-tonal
+      &,
+      &.enabled
+        > .m-icon
+          background: rgb(var(--secondary-container))
+          color: rgb(var(--on-secondary-container))
+
+        &.toggle
+          > .m-icon
+            background: rgb(var(--surface-variant))
+            color: rgb(var(--on-surface-variant))
+
+          &.selected
+            > .m-icon
+              background: rgb(var(--secondary-container))
+              color: rgb(var(--on-secondary-container))
+
+        &:hover:not(.focused):not(.pressed):not(.disabled),
+        &.hovered:not(.focused):not(.pressed):not(.disabled)
+          &::before
+            background: rgba(var(--on-secondary-container), 8%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--on-surface-variant), 8%)
+
+            &.selected
+              &::before
+                background: rgba(var(--on-secondary-container), 8%)
+
+        &:focus:not(.hovered):not(.pressed):not(.disabled),
+        &.focused:not(.hovered):not(.pressed):not(.disabled)
+          &::before
+            background: rgba(var(--on-secondary-container), 12%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--on-surface-variant), 12%)
+
+            &.selected
+              &::before
+                background: rgba(var(--on-secondary-container), 12%)
+
+        &:active:not(.hovered):not(.focused):not(.disabled),
+        &.pressed:not(.hovered):not(.focused):not(.disabled)
+          &::before
+            background: rgba(var(--on-secondary-container), 12%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--on-surface-variant), 12%)
+
+            &.selected
+              &::before
+                background: rgba(var(--on-secondary-container), 12%)
+
+      &:disabled:not(.hovered):not(.focused):not(.pressed),
+      &[disabled]:not(.hovered):not(.focused):not(.pressed),
+      &.disabled:not(.hovered):not(.focused):not(.pressed)
+        > .m-icon
+          background: rgba(var(--on-surface), 12%)
+          color: rgba(var(--on-surface), 38%)
+
+    &.m-outlined
+      > .m-icon
+        border: 1px solid
+
+      &,
+      &.enabled
+        > .m-icon
+          border-color: rgb(var(--outline))
+          color: rgb(var(--on-surface-variant))
+
+        &.toggle
+          > .m-icon
+            border-color: rgb(var(--outline))
+            color: rgb(var(--on-surface-variant))
+
+          &.selected
+            > .m-icon
+              background: rgb(var(--inverse-surface))
+              border-color: rgb(var(--inverse-surface))
+              color: rgb(var(--inverse-on-surface))
+
+        &:hover:not(.focused):not(.pressed):not(.disabled),
+        &.hovered:not(.focused):not(.pressed):not(.disabled)
+          &::before
+            background: rgba(var(--on-surface-variant), 8%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--on-surface-variant), 8%)
+
+            &.selected
+              &::before
+                background: rgba(var(--inverse-on-surface), 8%)
+
+        &:focus:not(.hovered):not(.pressed):not(.disabled),
+        &.focused:not(.hovered):not(.pressed):not(.disabled)
+          &::before
+            background: rgba(var(--inverse-on-surface), 12%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--inverse-on-surface), 12%)
+
+            &.selected
+              &::before
+                background: rgba(var(--on-surface-variant), 12%)
+
+        &:active:not(.hovered):not(.focused):not(.disabled),
+        &.pressed:not(.hovered):not(.focused):not(.disabled)
+          &::before
+            background: rgba(var(--inverse-on-surface), 12%)
+
+          &.toggle
+            &::before
+              background: rgba(var(--inverse-on-surface), 12%)
+
+            &.selected
+              &::before
+                background: rgba(var(--on-surface-variant), 12%)
+
+      &:disabled:not(.hovered):not(.focused):not(.pressed),
+      &[disabled]:not(.hovered):not(.focused):not(.pressed),
+      &.disabled:not(.hovered):not(.focused):not(.pressed)
+        > .m-icon
+          border-color: rgba(var(--on-surface), 12%)
+          color: rgba(var(--on-surface), 38%)
+
+  &.m-fab
+    width: 56px
+    height: 56px
+    grid-template-columns: [col-1-start] 1fr [col-1-end]
+    border-radius: 16px
+
+    &::before
+      border-radius: 16px
+
+    > .m-icon
+      font-size: 24px
+
+    &.small
+      width: 40px
+      height: 40px
+      border-radius: 12px
+
+      &::before
+        border-radius: 12px
+
+    &.large
+      width: 96px
+      height: 96px
+      border-radius: 28px
+
+      &::before
+        border-radius: 28px
+
+      > .m-icon
+        font-size: 36px
+
+  &.m-extended-fab
+    padding: 0 16px
+    height: 56px
+    border-radius: 16px
+
+    &::before
+      border-radius: 16px
+
+    > .m-icon
+      font-size: 24px
+
+    > .m-icon
+      + .m-typography
+        &.m-label
+          padding-left: 16px
+
+  &.m-fab,
+  &.m-extended-fab
+    &,
+    &.enabled
+      background: rgb(var(--primary-container))
+      box-shadow: var(--shadow-3)
+
+      &.lowered
+        box-shadow: var(--shadow-1)
+
+      > .m-icon
+        color: rgb(var(--on-primary-container))
+
+      &.surface
+        background: var(--elevation-3), rgb(var(--surface))
+
+        &.lowered
+          background: var(--elevation-1), rgb(var(--surface))
+
+        > .m-icon
+          color: rgb(var(--primary))
+
+      &.secondary
+        background: rgb(var(--secondary-container))
+
+        > .m-icon
+          color: rgb(var(--on-secondary-container))
+
+      &.tertiary
+        background: rgb(var(--tertiary-container))
+
+        > .m-icon
+          color: rgb(var(--on-tertiary-container))
+
+      &:hover:not(.focused):not(.pressed):not(.disabled),
+      &.hovered:not(.focused):not(.pressed):not(.disabled)
+        box-shadow: var(--shadow-4)
+
+        &.lowered
+          box-shadow: var(--shadow-2)
+
+        &::before
+          background: rgba(var(--on-primary-container), 8%)
+
+        &.surface
+          background: var(--elevation-4), rgb(var(--surface))
+
+          &.lowered
+            background: var(--elevation-2), rgb(var(--surface))
+
+          &::before
+            background: rgba(var(--primary), 8%)
+
+        &.secondary
+          &::before
+            background: rgba(var(--on-secondary-container), 8%)
+
+        &.tertiary
+          &::before
+            background: rgba(var(--on-tertiary-container), 8%)
+
+      &:focus:not(.hovered):not(.pressed):not(.disabled),
+      &.focused:not(.hovered):not(.pressed):not(.disabled)
+        box-shadow: var(--shadow-3)
+
+        &.lowered
+          box-shadow: var(--shadow-1)
+
+        &::before
+          background: rgba(var(--on-primary-container), 12%)
+
+        &.surface
+          &::before
+            background: rgba(var(--primary), 12%)
+
+        &.secondary
+          &::before
+            background: rgba(var(--on-secondary-container), 12%)
+
+        &.tertiary
+          &::before
+            background: rgba(var(--on-tertiary-container), 12%)
+
+      &:active:not(.hovered):not(.focused):not(.disabled),
+      &.pressed:not(.hovered):not(.focused):not(.disabled)
+        box-shadow: var(--shadow-3)
+
+        &.lowered
+          box-shadow: var(--shadow-1)
+
+        &::before
+          background: rgba(var(--on-primary-container), 12%)
+
+        &.surface
+          &::before
+            background: rgba(var(--primary), 12%)
+
+        &.secondary
+          &::before
+            background: rgba(var(--on-secondary-container), 12%)
+
+        &.tertiary
+          &::before
+            background: rgba(var(--on-tertiary-container), 12%)
+
+    &:disabled:not(.hovered):not(.focused):not(.pressed),
+    &[disabled]:not(.hovered):not(.focused):not(.pressed),
+    &.disabled:not(.hovered):not(.focused):not(.pressed)
+      background: transparent
+      box-shadow: rgb(var(--shadow-0))
+
+      &.lowered
+        box-shadow: rgb(var(--shadow-0))
+
+      > .m-icon
+        color: rgba(var(--on-primary-container), 38%)
+
+      > .m-typography
+        color: rgba(var(--on-primary-container), 38%)
+
+      &.surface
+        > .m-icon
+          color: rgba(var(--primary), 38%)
+
+      &.secondary
+        > .m-icon
+          color: rgba(var(--on-secondary-container), 38%)
+
+      &.tertiary
+        > .m-icon
+          color: rgba(var(--on-tertiary-container), 38%)
+
+  &.m-extended-fab
+    &,
+    &.enabled
+      > .m-typography
+          &.m-label
+            color: rgb(var(--on-primary-container))
+
+      &.surface
+        > .m-typography
+          &.m-label
+            color: rgb(var(--primary))
+
+      &.secondary
+        > .m-typography
+          &.m-label
+            color: rgb(var(--on-secondary-container))
+
+      &.tertiary
+        > .m-typography
+          &.m-label
+            color: rgb(var(--on-tertiary-container))
+
+    &:disabled:not(.hovered):not(.focused):not(.pressed),
+    &[disabled]:not(.hovered):not(.focused):not(.pressed),
+    &.disabled:not(.hovered):not(.focused):not(.pressed)
+      > .m-typography
+        &.m-label
+          color: rgba(var(--on-primary-container), 38%)
+
+      &.surface
+        > .m-typography
+          &.m-label
+            color: rgba(var(--primary), 38%)
+
+      &.secondary
+        > .m-typography
+          &.m-label
+            color: rgba(var(--on-secondary-container), 38%)
+
+      &.tertiary
+        > .m-typography
+          &.m-label
+            color: rgba(var(--on-tertiary-container), 38%)

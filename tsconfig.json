@@ -1,0 +1,55 @@
+{
+  "maxNodeModuleJsDepth": 5,
+  "compilerOptions": {
+    "types": [
+      "node",
+      "vite/client"
+    ],
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "checkJs": false,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "removeComments": true,
+    "isolatedModules": true,
+    "lib": [
+      "esnext"
+    ],
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    }
+  },
+  "include": [
+    "typings/**/*.d.ts",
+    "src/**/*.ts",
+    "vite.config*.ts",
+    "__tests__/**/*",
+    "__benchmarks__/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ],
+  "typeRoots": [
+    "typings",
+    "@types"
+  ]
+}

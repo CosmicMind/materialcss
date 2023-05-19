@@ -1,0 +1,618 @@
+/**
+ * BSD 3-Clause License
+ *
+ * Copyright © 2023, Daniel Jonathan <daniel at cosmicmind dot com>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from
+ *    this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES LOSS OF USE, DATA, OR PROFITS OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+@use './conversion'
+
+%m-text-field
+  display: grid
+  grid-template-rows: [row-1-start] 56px [row-1-end row-2-start] max-content [row-2-end]
+  grid-template-columns: [col-1-start] 1fr [col-1-end]
+
+%m-text-field-control
+  position: relative
+  display: grid
+  grid-row: row-1-start / row-1-end
+  grid-column: col-1-start / col-1-end
+  grid-template-rows: [row-1-start] 1fr [row-1-end]
+  grid-template-columns: [col-1-start] max-content [col-1-end col-2-start] 1fr [col-2-end col-3-start] max-content [col-3-end]
+
+%m-text-field-state-layer
+  content: ' '
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+  display: none
+  z-index: 0
+
+%m-text-field-leading,
+%m-text-field-trailing
+  display: grid
+  grid-auto-columns: minmax(max-content, 1fr)
+  grid-auto-flow: column
+  z-index: 1
+
+%m-text-field-leading
+  padding-left: 12px
+  grid-row: row-1-start / row-1-end
+  grid-column: col-1-start / col-1-end
+
+%m-text-field-trailing
+  padding-right: 12px
+  grid-row: row-1-start / row-1-end
+  grid-column: col-3-start / col-3-end
+
+%m-text-field-body
+  padding: 0 16px
+  display: grid
+  grid-row: row-1-start / row-1-end
+  grid-column: col-2-start / col-2-end
+  grid-template-rows: [row-1-start] max-content [row-1-end row-2-start] max-content [row-2-end]
+  grid-template-columns: [col-1-start] max-content [col-1-end col-2-start] 1fr [col-2-end col-3-start] max-content [col-3-end]
+  align-content: center
+  justify-content: stretch
+  z-index: 1
+
+%m-text-field-body-label
+  @extend %is-not-selectable
+
+  grid-row: row-1-start / row-1-end
+  grid-column: col-1-start / col-3-end
+  overflow: hidden
+
+%m-text-field-body-prefix,
+%m-text-field-body-suffix
+  @extend %is-not-selectable
+
+  overflow: hidden
+
+%m-text-field-body-prefix-label,
+%m-text-field-body-suffix-label
+  @extend %m-typography-body-large
+
+%m-text-field-input
+  @extend %m-typography-body-large
+
+  padding: 0
+  grid-row: row-2-start / row-2-end
+  grid-column: col-2-start / col-2-end
+
+%m-text-field-body-prefix
+  padding-right: 4px
+  grid-row: row-2-start / row-2-end
+  grid-column: col-1-start / col-1-end
+
+%m-text-field-body-suffix
+  padding-left: 4px
+  grid-row: row-2-start / row-2-end
+  grid-column: col-3-start / col-3-end
+
+%m-text-field-support
+  padding: 4px 16px 0
+  display: grid
+  grid-row: row-2-start / row-2-end
+  grid-column: col-1-start / col-1-end
+  grid-template-rows: [row-1-start] 1fr [row-1-end]
+  grid-template-columns: [col-1-start] 1fr [col-1-end col-2-start] max-content [col-2-end]
+
+%m-text-field-support-body,
+%m-text-field-support-label
+  grid-row: row-1-start / row-1-end
+
+%m-text-field-support-body
+  grid-column: col-1-start / col-1-end
+
+%m-text-field-support-label
+  padding-left: 16px
+  grid-column: col-2-start / col-2-end
+
+.m-text-field
+  @extend %m-text-field
+
+  > .m-field-control
+    @extend %m-text-field-control
+
+    &::before
+      @extend %m-text-field-state-layer
+
+    > .m-field-leading
+      @extend %m-text-field-leading
+
+    > .m-field-trailing
+      @extend %m-text-field-trailing
+
+    > .m-field-body
+      @extend %m-text-field-body
+
+      > .m-typography
+        &.m-label
+          @extend %m-text-field-body-label
+
+      > .m-field-prefix
+        @extend %m-text-field-body-prefix
+
+        > .m-typography
+          &.m-label
+            @extend %m-text-field-body-prefix-label
+
+      > .m-field-suffix
+        @extend %m-text-field-body-suffix
+
+        > .m-typography
+          &.m-label
+            @extend %m-text-field-body-suffix-label
+
+      > .m-field-input
+        @extend %m-text-field-input
+
+        &:-webkit-autofill
+          animation-name: onAutoFillStart
+
+        &:not(:-webkit-autofill)
+          animation-name: onAutoFillCancel
+
+        @keyframes onAutoFillStart
+          from
+            /** */
+          to
+            /** */
+
+        @keyframes onAutoFillCancel
+          from
+            /** */
+          to
+            /** */
+
+  > .m-field-support
+    @extend %m-text-field-support
+
+    > .m-typography
+      &.m-body
+        @extend %m-text-field-support-body
+
+      &.m-label
+        @extend %m-text-field-support-label
+
+  &.is-empty:not(.focused)
+    > .m-field-control
+      > .m-field-body
+        > .m-typography
+          &.m-label
+            @extend %m-typography-body-large
+
+        > .m-field-prefix,
+        > .m-field-suffix,
+        > .m-field-input
+          height: 0
+          appearance: none
+
+  &.without-label-text
+    &.focused,
+    &:not(.is-empty)
+      > .m-field-control
+        > .m-field-body
+          > .m-typography
+            &.m-label
+              height: 0
+              appearance: none
+
+  &:focus:not(.hovered):not(.disabled),
+  &.focused:not(.hovered):not(.disabled)
+    > .m-field-control
+      > .m-field-body
+        > .m-typography
+          &.m-label
+            @extend %m-typography-body-small
+
+  &.m-outlined
+    &:not(.is-empty),
+    &:focus:not(.hovered):not(.disabled),
+    &.focused:not(.hovered):not(.disabled)
+      > .m-field-control
+        > .m-field-body
+          > .m-typography
+            &.m-label
+              padding: 0 4px
+              position: absolute
+              top: -8px
+              left: 12px
+
+  &:disabled:not(.hovered):not(.focused),
+  &[disabled="true"]:not(.hovered):not(.focused),
+  &.disabled:not(.hovered):not(.focused)
+    @extend %is-not-selectable
+
+    cursor: not-allowed
+    pointer-events: all !important
+
+    > .m-field-control
+      > .m-field-leading,
+      > .m-field-trailing
+        > .m-icon
+          color: conversion.hex-to-rgba(var(--on-surface), 38%)
+
+      > .m-field-body
+        > .m-typography
+          &.m-label
+            color: conversion.hex-to-rgba(var(--on-surface), 38%)
+
+        > .m-field-input
+          pointer-events: none !important
+
+          color: conversion.hex-to-rgba(var(--on-surface), 38%)
+
+  &.m-filled
+    > .m-field-control
+      border-bottom: 1px solid transparent
+      border-top-left-radius: 4px
+      border-top-right-radius: 4px
+
+      &::before
+        border-bottom: 1px solid transparent
+        border-top-left-radius: 4px
+        border-top-right-radius: 4px
+
+      > .m-field-leading,
+      > .m-field-trailing
+        > .m-icon
+          font-size: 24px
+
+      > .m-field-body
+        > .m-typography
+          &.m-label
+            @extend %m-typography-body-small
+
+        > .m-field-input
+          border: none
+          outline: none
+          background: transparent
+
+    > .m-field-support
+      > .m-typography
+        &.m-body,
+        &.m-label
+          @extend %m-typography-body-small
+
+    &,
+    &.enabled
+      > .m-field-control
+        border-bottom-color: rgb(var(--on-surface-variant))
+        background: rgb(var(--surface-variant))
+
+        > .m-field-leading,
+        > .m-field-trailing
+          > .m-icon
+            color: rgb(var(--on-surface-variant))
+
+        > .m-field-body
+          > .m-typography
+            &.m-label
+              color: rgb(var(--on-surface-variant))
+
+          > .m-field-prefix,
+          > .m-field-suffix
+            > .m-typography
+              &.m-label
+                color: rgb(var(--on-surface-variant))
+
+          > .m-field-input
+            background: transparent
+
+            color: rgb(var(--on-surface))
+            caret-color: rgb(var(--primary))
+
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active
+              -webkit-text-fill-color: rgb(var(--on-surface)) !important
+              -webkit-box-shadow: 0 0 0 30px inset rgb(var(--surface-variant)) !important
+
+      > .m-field-support
+        > .m-typography
+          &.m-body,
+          &.m-label
+            color: rgb(var(--on-surface-variant))
+
+      &.has-error
+        > .m-field-control
+          border-bottom-color: rgb(var(--error))
+
+          > .m-field-trailing
+            .m-icon
+              color: rgb(var(--error))
+
+          > .m-field-body
+            > .m-typography
+              &.m-label
+                color: rgb(var(--error))
+
+        > .m-field-support
+          > .m-typography
+            &.m-body,
+            &.m-label
+              color: rgb(var(--error))
+
+      &:hover:not(.focused):not(.disabled),
+      &.hovered:not(.focused):not(.disabled)
+        cursor: pointer
+
+        > .m-field-control
+          border-bottom-color: rgb(var(--on-surface))
+
+          &::before
+            display: block
+
+            background: conversion.hex-to-rgba(var(--on-surface), 8%)
+
+        &.has-error
+          > .m-field-control
+            border-bottom-color: rgb(var(--on-error-container))
+
+            > .m-field-trailing
+              .m-icon
+                color: rgb(var(--on-error-container))
+
+            > .m-field-body
+              > .m-typography
+                &.m-label
+                  color: rgb(var(--on-error-container))
+
+      &:focus:not(.hovered):not(.disabled),
+      &.focused:not(.hovered):not(.disabled)
+        > .m-field-control
+          border-bottom-color: rgb(var(--primary))
+
+          &::before
+            display: block
+
+            border-bottom-color: rgb(var(--primary))
+
+          > .m-field-body
+            > .m-typography
+              &.m-label
+                color: rgb(var(--primary))
+
+        &.has-error
+          > .m-field-control
+            border-bottom-color: rgb(var(--error))
+
+            &::before
+              border-bottom-color: rgb(var(--error))
+
+            > .m-field-body
+              > .m-typography
+                &.m-label
+                  color: rgb(var(--error))
+
+              > .m-field-input
+                caret-color: rgb(var(--error))
+
+    &:disabled:not(.hovered):not(.focused),
+    &[disabled="true"]:not(.hovered):not(.focused),
+    &.disabled:not(.hovered):not(.focused)
+      > .m-field-control
+        background: conversion.hex-to-rgba(var(--on-surface), 4%)
+        border-bottom-color: conversion.hex-to-rgba(var(--on-surface), 38%)
+
+        > .m-field-body
+          > .m-field-input
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active
+              -webkit-text-fill-color: conversion.hex-to-rgba(var(--on-surface), 38%) !important
+              -webkit-box-shadow: 0 0 0 30px inset conversion.hex-to-rgba(var(--on-surface), 4%) !important
+
+      > .m-field-support
+        > .m-typography
+          &.m-body,
+          &.m-label
+            color: conversion.hex-to-rgba(var(--on-surface), 38%)
+
+  &.m-outlined
+    > .m-field-control
+      border: 1px solid
+      border-radius: 4px
+
+      &::before
+        border: 1px solid
+        border-radius: 4px
+
+      > .m-field-leading,
+      > .m-field-trailing
+        > .m-icon
+          font-size: 24px
+
+      > .m-field-body
+        > .m-typography
+          &.m-label
+            @extend %m-typography-body-small
+
+        > .m-field-input
+          border: none
+          outline: none
+          background: transparent
+
+    > .m-field-support
+      > .m-typography
+        &.m-body,
+        &.m-label
+          @extend %m-typography-body-small
+
+    &:not(.is-empty)
+      > .m-field-control
+        > .m-field-body
+          > .m-typography
+            &.m-label
+              background: rgb(var(--surface))
+
+    &,
+    &.enabled
+      > .m-field-control
+        border-color: rgb(var(--outline))
+
+        > .m-field-leading,
+        > .m-field-trailing
+          > .m-icon
+            color: rgb(var(--on-surface-variant))
+
+        > .m-field-body
+          > .m-typography
+            &.m-label
+              color: rgb(var(--on-surface-variant))
+
+          > .m-field-prefix,
+          > .m-field-suffix
+            > .m-typography
+              &.m-label
+                color: rgb(var(--on-surface-variant))
+
+          > .m-field-input
+            background: transparent
+
+            color: rgb(var(--on-surface))
+            caret-color: rgb(var(--primary))
+
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active
+              -webkit-text-fill-color: rgb(var(--on-surface-variant)) !important
+              -webkit-box-shadow: 0 0 0 30px inset rgb(var(--surface)) !important
+
+      > .m-field-support
+        > .m-typography
+          &.m-body,
+          &.m-label
+            color: rgb(var(--on-surface-variant))
+
+      &.has-error
+        > .m-field-control
+          border-color: rgb(var(--error))
+
+          > .m-field-trailing
+            > .m-icon
+              color: rgb(var(--error))
+
+          > .m-field-body
+            > .m-typography
+              &.m-label
+                color: rgb(var(--error))
+
+        > .m-field-support
+          > .m-typography
+            &.m-body,
+            &.m-label
+              color: rgb(var(--error))
+
+      &:hover:not(.focused):not(.disabled),
+      &.hovered:not(.focused):not(.disabled)
+        cursor: pointer
+
+        > .m-field-control
+          border-color: rgb(var(--on-surface))
+
+          > .m-field-body
+            > .m-typography
+              &.m-label
+                color: rgb(var(--on-surface))
+
+            > .m-field-prefix,
+            > .m-field-suffix
+              > .m-typography
+                &.m-label
+                  color: rgb(var(--on-surface))
+
+        &.has-error
+          > .m-field-control
+            border-color: rgb(var(--on-error-container))
+
+            > .m-field-trailing
+              .m-icon
+                color: rgb(var(--on-error-container))
+
+            > .m-field-body
+              > .m-typography
+                &.m-label
+                  color: rgb(var(--on-error-container))
+
+      &:focus:not(.hovered):not(.disabled),
+      &.focused:not(.hovered):not(.disabled)
+        > .m-field-control
+          &,
+          &::before
+            border-color: rgb(var(--primary))
+
+          &::before
+            display: block
+
+          > .m-field-body
+            > .m-typography
+              &.m-label
+                background: rgb(var(--surface))
+                color: rgb(var(--primary))
+
+        &.has-error
+          > .m-field-control
+            &,
+            &::before
+              border-color: rgb(var(--error))
+
+            > .m-field-body
+              > .m-typography
+                &.m-label
+                  color: rgb(var(--error))
+
+              > .m-field-input
+                caret-color: rgb(var(--error))
+
+    &:disabled:not(.hovered):not(.focused),
+    &[disabled="true"]:not(.hovered):not(.focused),
+    &.disabled:not(.hovered):not(.focused)
+      > .m-field-control
+        border-color: conversion.hex-to-rgba(var(--on-surface), 12%)
+
+        > .m-field-body
+          > .m-field-input
+            &:-webkit-autofill,
+            &:-webkit-autofill:hover,
+            &:-webkit-autofill:focus,
+            &:-webkit-autofill:active
+              -webkit-text-fill-color: conversion.hex-to-rgba(var(--on-surface), 38%) !important
+
+      > .m-field-support
+        > .m-typography
+          &.m-body,
+          &.m-label
+            color: conversion.hex-to-rgba(var(--on-surface), 38%)

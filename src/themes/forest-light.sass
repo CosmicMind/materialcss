@@ -1,0 +1,208 @@
+/**
+ * BSD 3-Clause License
+ *
+ * Copyright © 2023, Daniel Jonathan <daniel at cosmicmind dot com>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from
+ *    this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES LOSS OF USE, DATA, OR PROFITS OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+@use '../lib/color'
+
+$primary: #426915
+$primary-rgb: color.hex-to-rgb($primary)
+$on-primary: #ffffff
+$on-primary-rgb: color.hex-to-rgb($on-primary)
+$primary-container: #c2f18e
+$primary-container-rgb: color.hex-to-rgb($primary-container)
+$on-primary-container: #0f2000
+$on-primary-container-rgb: color.hex-to-rgb($on-primary-container)
+$primary-fixed: #c2f18e
+$primary-fixed-rgb: color.hex-to-rgb($primary-fixed)
+$on-primary-fixed: #0f2000
+$on-primary-fixed-rgb: color.hex-to-rgb($on-primary-fixed)
+$primary-fixed-dim: #a7d475
+$primary-fixed-dim-rgb: color.hex-to-rgb($primary-fixed-dim)
+$on-primary-fixed-variant: #2d5000
+$on-primary-fixed-variant-rgb: color.hex-to-rgb($on-primary-fixed-variant)
+$secondary: #57624a
+$secondary-rgb: color.hex-to-rgb($secondary)
+$on-secondary: #ffffff
+$on-secondary-rgb: color.hex-to-rgb($on-secondary)
+$secondary-container: #dbe7c8
+$secondary-container-rgb: color.hex-to-rgb($secondary-container)
+$on-secondary-container: #151e0b
+$on-secondary-container-rgb: color.hex-to-rgb($on-secondary-container)
+$secondary-fixed: #dbe7c8
+$secondary-fixed-rgb: color.hex-to-rgb($secondary-fixed)
+$on-secondary-fixed: #151e0b
+$on-secondary-fixed-rgb: color.hex-to-rgb($on-secondary-fixed)
+$secondary-fixed-dim: #bfcbad
+$secondary-fixed-dim-rgb: color.hex-to-rgb($secondary-fixed-dim)
+$on-secondary-fixed-variant: #404a33
+$on-secondary-fixed-variant-rgb: color.hex-to-rgb($on-secondary-fixed-variant)
+$tertiary: #386663
+$tertiary-rgb: color.hex-to-rgb($tertiary)
+$on-tertiary: #ffffff
+$on-tertiary-rgb: color.hex-to-rgb($on-tertiary)
+$tertiary-container: #bbece8
+$tertiary-container-rgb: color.hex-to-rgb($tertiary-container)
+$on-tertiary-container: #00201f
+$on-tertiary-container-rgb: color.hex-to-rgb($on-tertiary-container)
+$tertiary-fixed: #bbece8
+$tertiary-fixed-rgb: color.hex-to-rgb($tertiary-fixed)
+$on-tertiary-fixed: #00201f
+$on-tertiary-fixed-rgb: color.hex-to-rgb($on-tertiary-fixed)
+$tertiary-fixed-dim: #a0cfcc
+$tertiary-fixed-dim-rgb: color.hex-to-rgb($tertiary-fixed-dim)
+$on-tertiary-fixed-variant: #1f4e4c
+$on-tertiary-fixed-variant-rgb: color.hex-to-rgb($on-tertiary-fixed-variant)
+$error: #ba1a1a
+$error-rgb: color.hex-to-rgb($error)
+$error-container: #ffdad6
+$error-container-rgb: color.hex-to-rgb($error-container)
+$on-error: #ffffff
+$on-error-rgb: color.hex-to-rgb($on-error)
+$on-error-container: #410002
+$on-error-container-rgb: color.hex-to-rgb($on-error-container)
+$background: #fdfcf5
+$background-rgb: color.hex-to-rgb($background)
+$on-background: #1b1c18
+$on-background-rgb: color.hex-to-rgb($on-background)
+$outline: #75796c
+$outline-rgb: color.hex-to-rgb($outline)
+$inverse-on-surface: #f2f1ea
+$inverse-on-surface-rgb: color.hex-to-rgb($inverse-on-surface)
+$inverse-surface: #30312c
+$inverse-surface-rgb: color.hex-to-rgb($inverse-surface)
+$inverse-primary: #a7d475
+$inverse-primary-rgb: color.hex-to-rgb($inverse-primary)
+$shadow: #000000
+$shadow-rgb: color.hex-to-rgb($shadow)
+$surface-tint: #426915
+$surface-tint-rgb: color.hex-to-rgb($surface-tint)
+$outline-variant: #c4c8ba
+$outline-variant-rgb: color.hex-to-rgb($outline-variant)
+$scrim: #000000
+$scrim-rgb: color.hex-to-rgb($scrim)
+$surface: #fafaf2
+$surface-rgb: color.hex-to-rgb($surface)
+$on-surface: #1b1c18
+$on-surface-rgb: color.hex-to-rgb($on-surface)
+$surface-variant: #e1e4d5
+$surface-variant-rgb: color.hex-to-rgb($surface-variant)
+$on-surface-variant: #44483d
+$on-surface-variant-rgb: color.hex-to-rgb($on-surface-variant)
+$surface-container-highest: #e3e3db
+$surface-container-highest-rgb: color.hex-to-rgb($surface-container-highest)
+$surface-container-high: #e9e8e1
+$surface-container-high-rgb: color.hex-to-rgb($surface-container-high)
+$surface-container: #efeee7
+$surface-container-rgb: color.hex-to-rgb($surface-container)
+$surface-container-low: #f5f4ec
+$surface-container-low-rgb: color.hex-to-rgb($surface-container-low)
+$surface-container-lowest: #ffffff
+$surface-container-lowest-rgb: color.hex-to-rgb($surface-container-lowest)
+$surface-dim: #dbdad3
+$surface-dim-rgb: color.hex-to-rgb($surface-dim)
+$surface-bright: #fafaf2
+$surface-bright-rgb: color.hex-to-rgb($surface-bright)
+$shadow-0: 0 0 0 rgba($scrim, 0), 0 0 0 0 rgba($scrim, 0)
+$shadow-1: 0px 1px 2px rgba($scrim, 0.3), 0px 1px 3px 1px rgba($scrim, 0.15)
+$shadow-2: 0px 1px 2px rgba($scrim, 0.3), 0px 2px 6px 2px rgba($scrim, 0.15)
+$shadow-3: 0px 4px 8px 3px rgba($scrim, 0.15), 0px 1px 3px rgba($scrim, 0.3)
+$shadow-4: 0px 6px 10px 4px rgba($scrim, 0.15), 0px 2px 3px rgba($scrim, 0.3)
+$shadow-5: 0px 8px 12px 6px rgba($scrim, 0.15), 0px 4px 4px rgba($scrim, 0.3)
+$elevation-0: linear-gradient(0deg, rgba($surface-tint, 0), rgba($surface-tint, 0))
+$elevation-1: linear-gradient(0deg, rgba($surface-tint, 0.05), rgba($surface-tint, 0.05))
+$elevation-2: linear-gradient(0deg, rgba($surface-tint, 0.08), rgba($surface-tint, 0.08))
+$elevation-3: linear-gradient(0deg, rgba($surface-tint, 0.11), rgba($surface-tint, 0.11))
+$elevation-4: linear-gradient(0deg, rgba($surface-tint, 0.12), rgba($surface-tint, 0.12))
+$elevation-5: linear-gradient(0deg, rgba($surface-tint, 0.14), rgba($surface-tint, 0.14))
+
+.forest
+  &.theme-light
+    --primary: #{$primary-rgb}
+    --on-primary: #{$on-primary-rgb}
+    --primary-container: #{$primary-container-rgb}
+    --on-primary-container: #{$on-primary-container-rgb}
+    --primary-fixed: #{$primary-fixed-rgb}
+    --on-primary-fixed: #{$on-primary-fixed-rgb}
+    --primary-fixed-dim: #{$primary-fixed-dim-rgb}
+    --on-primary-fixed-variant: #{$on-primary-fixed-variant-rgb}
+    --secondary: #{$secondary-rgb}
+    --on-secondary: #{$on-secondary-rgb}
+    --secondary-container: #{$secondary-container-rgb}
+    --on-secondary-container: #{$on-secondary-container-rgb}
+    --secondary-fixed: #{$secondary-fixed-rgb}
+    --on-secondary-fixed: #{$on-secondary-fixed-rgb}
+    --secondary-fixed-dim: #{$secondary-fixed-dim-rgb}
+    --on-secondary-fixed-variant: #{$on-secondary-fixed-variant-rgb}
+    --tertiary: #{$tertiary-rgb}
+    --on-tertiary: #{$on-tertiary-rgb}
+    --tertiary-container: #{$tertiary-container-rgb}
+    --on-tertiary-container: #{$on-tertiary-container-rgb}
+    --tertiary-fixed: #{$tertiary-fixed-rgb}
+    --on-tertiary-fixed: #{$on-tertiary-fixed-rgb}
+    --tertiary-fixed-dim: #{$tertiary-fixed-dim-rgb}
+    --on-tertiary-fixed-variant: #{$on-tertiary-fixed-variant-rgb}
+    --error: #{$error-rgb}
+    --error-container: #{$error-container-rgb}
+    --on-error: #{$on-error-rgb}
+    --on-error-container: #{$on-error-container-rgb}
+    --background: #{$background-rgb}
+    --on-background: #{$on-background-rgb}
+    --outline: #{$outline-rgb}
+    --inverse-on-surface: #{$inverse-on-surface-rgb}
+    --inverse-surface: #{$inverse-surface-rgb}
+    --inverse-primary: #{$inverse-primary-rgb}
+    --shadow: #{$shadow-rgb}
+    --surface-tint: #{$surface-tint-rgb}
+    --outline-variant: #{$outline-variant-rgb}
+    --scrim: #{$scrim-rgb}
+    --surface: #{$surface-rgb}
+    --on-surface: #{$on-surface-rgb}
+    --surface-variant: #{$surface-variant-rgb}
+    --on-surface-variant: #{$on-surface-variant-rgb}
+    --surface-container-highest: #{$surface-container-highest-rgb}
+    --surface-container-high: #{$surface-container-high-rgb}
+    --surface-container: #{$surface-container-rgb}
+    --surface-container-low: #{$surface-container-low-rgb}
+    --surface-container-lowest: #{$surface-container-lowest-rgb}
+    --surface-dim: #{$surface-dim-rgb}
+    --surface-bright: #{$surface-bright-rgb}
+    --shadow-0: #{$shadow-0}
+    --shadow-1: #{$shadow-1}
+    --shadow-2: #{$shadow-2}
+    --shadow-3: #{$shadow-3}
+    --shadow-4: #{$shadow-4}
+    --shadow-5: #{$shadow-5}
+    --elevation-0: #{$elevation-0}
+    --elevation-1: #{$elevation-1}
+    --elevation-2: #{$elevation-2}
+    --elevation-3: #{$elevation-3}
+    --elevation-4: #{$elevation-4}
+    --elevation-5: #{$elevation-5}
