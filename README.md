@@ -1,7 +1,5 @@
-![MaterialVue GitHub Banner](https://raw.githubusercontent.com/CosmicMind/materialvue/dev/public/github/materialvue-github-banner-051223-b.png)
-
-Inspired by [Google's Material Design System](https://m3.material.io/), MaterialVue is a framework that offers both CSS and [Vue 3](https:/vuejs.org/) component libraries.
-MaterialVue supports [Google Fonts icons](https://fonts.google.com/icons), [Vue 3](https:/vuejs.org/), and a pure CSS library for community development.
+Inspired by [Google's Material Design System](https://m3.material.io/), MaterialCSS is a pure CSS framework. It is designed to be used alone, or 
+as a core for other frameworks, such as [MaterialVue](https://www.materialvue.com).
 
 # Features
 
@@ -15,12 +13,3 @@ MaterialVue supports [Google Fonts icons](https://fonts.google.com/icons), [Vue 
 - [x] Navigation - rail, drawer and top app bar
 - [x] Icons - Google Fonts and Fontawesome support
 - [x] More in development
-
-# Buttons
-
-[MaterialVue Common Buttons](https://www.materialvue.com/buttons)
-
-Buttons help users take action within your application. There are five types of common buttons: elevated, filled, filled tonal, outlined, and text.
-
-![MaterialVue GitHub Common Buttons](https://raw.githubusercontent.com/CosmicMind/materialvue/dev/public/github/materialvue-github-common-buttons-051223-b.png)
-
