@@ -35,6 +35,8 @@
 @use './adaptive'
 @use './conversion'
 
+@import './block'
+
 @mixin with-count($n)
   @if $n == 1
     &:first-child:nth-last-child(1)
@@ -64,117 +66,20 @@
     &.is-#{$size}#{$i}
       grid-template-columns: repeat($i, 1fr)
 
-%m-layout-flex
-  display: flex
-  flex-flow: column
+%m-layout
+  @extend %m-block-flow-row
 
-%m-layout-grid
-  display: grid
-  grid-auto-flow: row
-
-%m-section,
-%m-row,
-%m-column,
 %m-tile
-  &.align-items-start
-    align-items: start
+  @extend %m-block-flow-row
 
-  &.align-items-center
-    align-items: center
-
-  &.align-items-end
-    align-items: end
-
-  &.align-content-start
-    align-content: start
-
-  &.align-content-center
-    align-content: center
-
-  &.align-content-end
-    align-content: end
-
-  &.justify-items-start
-    justify-items: start
-
-  &.justify-items-center
-    justify-items: center
-
-  &.justify-items-end
-    justify-items: end
-
-  &.justify-content-start
-    justify-content: start
-
-  &.justify-content-center
-    justify-content: center
-
-  &.justify-content-end
-    justify-content: end
-
-%m-section-flex
-  @extend %m-section
-
-  display: flex
-  flex-flow: column
-  flex: 1 0 0
-
-%m-section-grid
-  @extend %m-section
+%m-section
+  @extend %m-block-flow-row
 
   display: grid
   grid-auto-flow: row
 
-%m-column-flex
-  @extend %m-column
-
-  display: flex
-  flex-flow: column
-  flex: 1 0 0
-
-  @include flex('', 12)
-
-  @include adaptive.is-compact
-    @include flex('compact-', 12)
-
-  @include adaptive.is-gt-compact
-    @include flex('gt-compact-', 12)
-
-  @include adaptive.is-small
-    @include flex('small-', 12)
-
-  @include adaptive.is-gt-small
-    @include flex('gt-small-', 12)
-
-  @include adaptive.is-lt-medium
-    @include flex('lt-medium-', 12)
-
-  @include adaptive.is-medium
-    @include flex('medium-', 12)
-
-  @include adaptive.is-gt-medium
-    @include flex('gt-medium-', 12)
-
-  @include adaptive.is-lt-large
-    @include flex('lt-large-', 12)
-
-  @include adaptive.is-large
-    @include flex('large-', 12)
-
-  @include adaptive.is-gt-large
-    @include flex('gt-large-', 12)
-
-  @include adaptive.is-lt-expanded
-    @include flex('lt-expanded-', 12)
-
-  @include adaptive.is-expanded
-    @include flex('expanded-', 12)
-
-%m-column-grid
-  @extend %m-column
-
-  display: grid
-  grid-auto-flow: row
+%m-column
+  @extend %m-block-flow-row
 
   @include grid-column('', 12)
 
@@ -214,23 +119,9 @@
   @include adaptive.is-expanded
     @include grid-column('expanded-', 12)
 
-%m-tile-grid
-  @extend %m-tile
+%m-row
+  @extend %m-block
 
-  display: grid
-  grid-auto-flow: row
-
-%m-row-flex
-  @extend %m-row
-
-  display: flex
-  flex-flow: row
-  flex: 1 0 0
-
-%m-row-grid
-  @extend %m-row
-
-  display: grid
   grid-template-columns: repeat(auto-fit, minmax(math.div(100, 12) * 1%, 1fr))
 
   @include grid-template-columns('', 12)
@@ -249,3 +140,60 @@
 
   @include adaptive.is-expanded
     @include grid-template-columns('expanded-', 12)
+
+%m-adaptive
+  @include adaptive.is-compact
+    gap: 48px
+
+    > %m-section
+      margin: 0 16px
+
+      gap: 16px
+
+      > %m-row
+        gap: 16px
+
+        > %m-column
+          gap: 16px
+
+          > %m-tile
+            gap: 16px
+
+  @include adaptive.is-gt-compact
+    gap: 72px
+
+    > %m-section
+      margin: 0 24px
+      gap: 24px
+
+      > %m-row
+        gap: 24px
+
+        > %m-column
+          gap: 24px
+
+          &.compact
+            gap: 12px
+
+          > %m-tile
+            gap: 24px
+
+            &.compact
+              gap: 12px
+
+  @include adaptive.is-gt-medium
+    margin: 0 24px
+    gap: 96px
+
+    > %m-section
+      margin: auto
+      width: 100%
+      max-width: conversion.to-px(adaptive.width(max-medium))
+
+      &.expanded
+        width: 100%
+        max-width: conversion.to-px(adaptive.width(expanded))
+
+      &.full
+        width: 100%
+        max-width: 100%
