@@ -30,17 +30,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@use './conversion'
+@import './stack'
 
 %m-list
-  margin: 0
-  padding: 0
-  width: 100%
-
-  display: grid
-  align-content: start
-  justify-content: stretch
-  grid-auto-flow: row
+  @extend %m-stack
 
   &:first-of-type
     padding-top: 8px
@@ -49,15 +42,10 @@
     padding-bottom: 8px
 
 %m-list-item
+  @extend %m-stack-item
+
   padding: 0 24px 0 16px
-  position: relative
   min-height: 56px
-  display: grid
-  grid-template-rows: [row-1-start] 1fr [row-1-end row-2-start] max-content [row-2-end]
-  grid-template-columns: [col-1-start] max-content [col-1-end col-2-start] 1fr [col-2-end col-3-start] max-content [col-3-end]
-  list-style-type: none
-  border: none
-  outline: none
 
   &:not(.is-not-interactive)
     cursor: pointer
@@ -83,228 +71,43 @@
     grid-template-columns: [col-1-start] max-content [col-1-end col-2-start] 1fr [col-2-end col-3-start] max-content [col-3-end]
 
 %m-list-item-divider
-  grid-row: row-2-start / row-2-end
-  grid-column: col-1-start / col-3-end
+  @extend %m-stack-item-divider
+
+%m-list-item-leading
+  @extend %m-stack-item-leading
+
+%m-list-item-body
+  @extend %m-stack-item-body
+
+%m-list-item-leading
+  @extend %m-stack-item-leading
 
 %m-list-item-leading,
 %m-list-item-body,
 %m-list-item-trailing
   padding-top: 8px
   padding-bottom: 8px
-  display: grid
 
-%m-list-item-leading,
-%m-list-item-trailing
-  align-content: center
-  justify-content: stretch
-  grid-auto-columns: minmax(max-content, 1fr)
-  grid-auto-flow: column
-
-%m-list-item-body
-  align-content: center
-  justify-content: stretch
-  grid-auto-flow: row
+%m-list-item-leading
+  @extend %m-stack-item-leading
 
 %m-list-item-trailing
-  grid-row: row-1-start / row-1-end
-  grid-column: col-3-start / col-3-end
+  @extend %m-stack-item-trailing
 
 %m-list-item-body
-  grid-row: row-1-start / row-1-end
-  grid-column: col-2-start / col-2-end
+  @extend %m-stack-item-body
+
+%m-list-item-trailing
+  @extend %m-stack-item-trailing
+
+%m-list-item-body
+  @extend %m-stack-item-body
 
   + %m-list-item-trailing
     padding-left: 16px
 
 %m-list-item-leading
-  grid-row: row-1-start / row-1-end
-  grid-column: col-1-start / col-1-end
+  @extend %m-stack-item-leading
 
   + %m-list-item-body
     padding-left: 16px
-
-.m-list
-  @extend %m-list
-
-  //&.lines-1
-  //  grid-auto-flow: minmax(56px, max-content)
-  //
-  //&.lines-2
-  //  grid-auto-flow: minmax(72px, max-content)
-
-  &.lines-3
-    //grid-auto-flow: minmax(88px, max-content)
-
-    > .m-list-item
-      .m-list-item-leading,
-      .m-list-item-body,
-      .m-list-item-trailing
-        align-content: start
-
-  > .m-list-item
-    @extend %m-list-item
-
-    > .m-divider
-      @extend %m-list-item-divider
-
-    &:has(.m-video),
-    &.has-leading-video
-      padding-left: 0
-
-    .m-list-item-leading
-      @extend %m-list-item-leading
-
-      > .m-icon
-        font-size: 18px
-
-      > img
-        width: 56px
-        height: 56px
-
-      > .m-avatar
-        width: 40px
-        height: 40px
-
-      > .m-video
-        width: 114px
-        height: 64px
-
-    .m-list-item-body
-      @extend %m-list-item-body
-
-      > .m-typography
-        &.m-headline
-          @extend %m-typography-body-large
-
-        &.m-body
-          @extend %m-typography-body-medium
-
-    .m-list-item-trailing
-      @extend %m-list-item-trailing
-
-      > .m-typography
-        &.m-label
-          @extend %m-typography-label-small
-
-      > .m-icon
-        font-size: 24px
-
-    &,
-    &.enabled
-      box-shadow: rgb(var(--shadow-0))
-
-      > .m-divider
-        border-color: rgb(var(--surface-variant))
-
-      .m-list-item-leading
-        > .m-icon
-          color: rgb(var(--on-surface-variant))
-
-        > .m-avatar
-          > .m-typography
-            &.m-label
-              background: rgb(var(--primary-container))
-              color: rgb(var(--on-primary-container))
-
-      .m-list-item-body
-        > .m-typography
-          &.m-headline
-            color: rgb(var(--on-surface))
-
-          &.m-body
-            color: rgb(var(--on-surface-variant))
-
-      .m-list-item-trailing
-        > .m-typography
-          &.m-label
-            color: rgb(var(--on-surface-variant))
-
-        > .m-icon
-          color: rgb(var(--on-surface-variant))
-
-      &:not(.is-not-interactive)
-        &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
-        &.hovered:not(.focused):not(.pressed):not(.dragged):not(.disabled)
-          cursor: pointer
-
-          &::before
-            background: conversion.hex-to-rgba(var(--on-surface), 8%)
-
-          .m-list-item-leading
-            > .m-icon
-              color: rgb(var(--on-surface-variant))
-
-          .m-list-item-trailing
-            > .m-icon
-              color: rgb(var(--on-surface-variant))
-
-        &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
-        &.focused:not(.hovered):not(.pressed):not(.dragged):not(.disabled)
-          &::before
-            background: conversion.hex-to-rgba(var(--on-surface), 12%)
-
-          .m-list-item-leading
-            > .m-icon
-              color: rgb(var(--on-surface-variant))
-
-          .m-list-item-trailing
-            > .m-icon
-              color: rgb(var(--on-surface-variant))
-
-        &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
-        &.pressed:not(.hovered):not(.focused):not(.dragged):not(.disabled)
-          &::before
-            background: conversion.hex-to-rgba(var(--on-surface), 12%)
-
-          .m-list-item-leading
-            > .m-icon
-              color: rgb(var(--on-surface-variant))
-
-          .m-list-item-trailing
-            > .m-icon
-              color: rgb(var(--on-surface-variant))
-
-        &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
-          box-shadow: var(--shadow-4)
-
-          &::before
-            background: conversion.hex-to-rgba(var(--on-surface), 16%)
-
-          .m-list-item-leading
-            > .m-icon
-              color: rgb(var(--on-surface-variant))
-
-          .m-list-item-trailing
-            > .m-icon
-              color: rgb(var(--on-surface-variant))
-
-    &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
-    &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
-    &.disabled:not(.hovered):not(.focused):not(.pressed:not(.dragged))
-      cursor: not-allowed
-      pointer-events: all !important
-      box-shadow: none
-      opacity: 38%
-
-      &::before
-        background: conversion.hex-to-rgba(var(--on-surface), 12%)
-
-      .m-list-item-leading
-        > .m-icon
-          color: conversion.hex-to-rgba(var(--on-surface), 38%)
-
-      .m-list-item-body
-        > .m-typography
-          &.m-headline
-            color: conversion.hex-to-rgba(var(--on-surface), 38%)
-
-          &.m-body
-            color: conversion.hex-to-rgba(var(--on-surface), 38%)
-
-      .m-list-item-trailing
-        > .m-typography
-          &.m-label
-            color: conversion.hex-to-rgba(var(--on-surface), 38%)
-
-        > .m-icon
-          color: conversion.hex-to-rgba(var(--on-surface), 38%)

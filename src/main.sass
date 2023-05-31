@@ -1,10 +1,15 @@
 /* Copyright © 2023, CosmicMind, Inc. <http://cosmicmind.com>. All rights reserved. */
 
+@use './lib/adaptive'
+@use './lib/conversion'
+
 @import './themes/forest-dark'
 @import './themes/forest-light'
 
 @import './lib/aspect-ratios'
 @import './lib/typography'
+@import './lib/stack'
+@import './lib/selection'
 @import './lib/layout'
 @import './lib/divider'
 @import './lib/form'
@@ -46,3 +51,520 @@
 ::selection
   background: rgb(var(--primary))
   color: rgb(var(--on-primary))
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  margin: 0
+  width: 100%
+
+p
+  margin: 24px 0
+
+a
+  color: inherit
+  text-decoration: none
+
+  &:hover
+    text-decoration: none
+
+.m-typography
+  @extend %m-typography
+
+  &.m-display
+    @extend %m-typography-display
+
+    &.large
+      @extend %m-typography-display-large
+
+    &,
+    &.medium
+      @extend %m-typography-display-medium
+
+    &.small
+      @extend %m-typography-display-small
+
+  &.m-headline
+    @extend %m-typography-headline
+
+    &.large
+      @extend %m-typography-headline-large
+
+    &,
+    &.medium
+      @extend %m-typography-headline-medium
+
+    &.small
+      @extend %m-typography-headline-small
+
+  &.m-title
+    @extend %m-typography-title
+
+    &.large
+      @extend %m-typography-title-large
+
+    &,
+    &.medium
+      @extend %m-typography-title-medium
+
+    &.small
+      @extend %m-typography-title-small
+
+    + .m-body
+      margin-top: 16px
+
+  &.m-label
+    @extend %m-typography-label
+
+    &.large
+      @extend %m-typography-label-large
+
+    &,
+    &.medium
+      @extend %m-typography-label-medium
+
+    &.small
+      @extend %m-typography-label-small
+
+    + .m-title
+      margin-top: 16px
+
+  &.m-body
+    @extend %m-typography-body
+
+    &.large
+      @extend %m-typography-body-large
+
+    &,
+    &.medium
+      @extend %m-typography-body-medium
+
+    &.small
+      @extend %m-typography-body-small
+
+    + .m-body
+      margin-top: 16px
+
+  &.m-link
+    @extend %m-typography-link
+
+    &.large
+      @extend %m-typography-link-large
+
+    &,
+    &.medium
+      @extend %m-typography-link-medium
+
+    &.small
+      @extend %m-typography-link-small
+
+.m-stack
+  @extend %m-stack
+
+  > .m-stack-item
+    @extend %m-stack-item
+
+    > .m-divider
+      @extend %m-stack-item-divider
+
+    .m-stack-item-leading
+      @extend %m-stack-item-leading
+
+    .m-stack-item-body
+      @extend %m-stack-item-body
+
+    .m-stack-item-trailing
+      @extend %m-stack-item-trailing
+
+.m-list
+  @extend %m-list
+
+  //&.lines-1
+  //  grid-auto-flow: minmax(56px, max-content)
+  //
+  //&.lines-2
+  //  grid-auto-flow: minmax(72px, max-content)
+
+  &.lines-3
+    //grid-auto-flow: minmax(88px, max-content)
+
+    > .m-list-item
+      .m-list-item-leading,
+      .m-list-item-body,
+      .m-list-item-trailing
+        align-content: start
+
+  > .m-list-item
+    @extend %m-list-item
+
+    > .m-divider
+      @extend %m-list-item-divider
+
+    &:has(.m-video),
+    &.has-leading-video
+      padding-left: 0
+
+    .m-list-item-leading
+      @extend %m-list-item-leading
+
+      > .m-icon
+        font-size: 18px
+
+      > img
+        width: 56px
+        height: 56px
+
+      > .m-avatar
+        width: 40px
+        height: 40px
+
+      > .m-video
+        width: 114px
+        height: 64px
+
+    .m-list-item-body
+      @extend %m-list-item-body
+
+      > .m-typography
+        &.m-headline
+          @extend %m-typography-body-large
+
+        &.m-body
+          @extend %m-typography-body-medium
+
+    .m-list-item-trailing
+      @extend %m-list-item-trailing
+
+      > .m-typography
+        &.m-label
+          @extend %m-typography-label-small
+
+      > .m-icon
+        font-size: 24px
+
+    &,
+    &.enabled
+      box-shadow: rgb(var(--shadow-0))
+
+      > .m-divider
+        border-color: rgb(var(--surface-variant))
+
+      .m-list-item-leading
+        > .m-icon
+          color: rgb(var(--on-surface-variant))
+
+        > .m-avatar
+          > .m-typography
+            &.m-label
+              background: rgb(var(--primary-container))
+              color: rgb(var(--on-primary-container))
+
+      .m-list-item-body
+        > .m-typography
+          &.m-headline
+            color: rgb(var(--on-surface))
+
+          &.m-body
+            color: rgb(var(--on-surface-variant))
+
+      .m-list-item-trailing
+        > .m-typography
+          &.m-label
+            color: rgb(var(--on-surface-variant))
+
+        > .m-icon
+          color: rgb(var(--on-surface-variant))
+
+      &:not(.is-not-interactive)
+        &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
+        &.hovered:not(.focused):not(.pressed):not(.dragged):not(.disabled)
+          cursor: pointer
+
+          &::before
+            background: rgba(var(--on-surface), 8%)
+
+          .m-list-item-leading
+            > .m-icon
+              color: rgb(var(--on-surface-variant))
+
+          .m-list-item-trailing
+            > .m-icon
+              color: rgb(var(--on-surface-variant))
+
+        &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
+        &.focused:not(.hovered):not(.pressed):not(.dragged):not(.disabled)
+          &::before
+            background: rgba(var(--on-surface), 12%)
+
+          .m-list-item-leading
+            > .m-icon
+              color: rgb(var(--on-surface-variant))
+
+          .m-list-item-trailing
+            > .m-icon
+              color: rgb(var(--on-surface-variant))
+
+        &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
+        &.pressed:not(.hovered):not(.focused):not(.dragged):not(.disabled)
+          &::before
+            background: rgba(var(--on-surface), 12%)
+
+          .m-list-item-leading
+            > .m-icon
+              color: rgb(var(--on-surface-variant))
+
+          .m-list-item-trailing
+            > .m-icon
+              color: rgb(var(--on-surface-variant))
+
+        &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
+          box-shadow: var(--shadow-4)
+
+          &::before
+            background: rgba(var(--on-surface), 16%)
+
+          .m-list-item-leading
+            > .m-icon
+              color: rgb(var(--on-surface-variant))
+
+          .m-list-item-trailing
+            > .m-icon
+              color: rgb(var(--on-surface-variant))
+
+    &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
+    &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
+    &.disabled:not(.hovered):not(.focused):not(.pressed:not(.dragged))
+      cursor: not-allowed
+      pointer-events: all !important
+      box-shadow: none
+      opacity: 38%
+
+      &::before
+        background: rgba(var(--on-surface), 12%)
+
+      .m-list-item-leading
+        > .m-icon
+          color: rgba(var(--on-surface), 38%)
+
+      .m-list-item-body
+        > .m-typography
+          &.m-headline
+            color: rgba(var(--on-surface), 38%)
+
+          &.m-body
+            color: rgba(var(--on-surface), 38%)
+
+      .m-list-item-trailing
+        > .m-typography
+          &.m-label
+            color: rgba(var(--on-surface), 38%)
+
+        > .m-icon
+          color: rgba(var(--on-surface), 38%)
+
+.is-not-selectable
+  @extend %is-not-selectable
+
+.is-selectable
+  @extend %is-selectable
+
+.is-nowrap
+  @extend %is-nowrap
+
+.is-ellipsis
+  @extend %is-ellipsis
+
+.m-layout
+  &.m-flex
+    @extend %m-layout-flex
+
+    > .m-section
+      @extend %m-section-flex
+
+      > .m-row
+        @extend %m-row-flex
+
+        > .m-column
+          @extend %m-column-flex
+
+  &.m-grid
+    @extend %m-layout-grid
+
+    > .m-section
+      @extend %m-section-grid
+
+      > .m-row
+        @extend %m-row-grid
+
+        > .m-column
+          @extend %m-column-grid
+
+          > .m-tile
+            @extend %m-tile-grid
+
+    &.m-adaptive
+      @extend %m-adaptive-grid
+
+.is-hidden
+  display: none !important
+
+%m-adaptive-grid
+  @include adaptive.is-compact
+    gap: 48px
+
+    > %m-section-grid
+      margin: 0 16px
+
+      gap: 16px
+
+      > %m-row-grid
+        gap: 16px
+
+        > %m-column-grid
+          gap: 16px
+
+          > %m-tile-grid
+            gap: 16px
+
+  @include adaptive.is-gt-compact
+    gap: 72px
+
+    > %m-section-grid
+      margin: 0 24px
+      gap: 24px
+
+      > %m-row-grid
+        gap: 24px
+
+        > %m-column-grid
+          gap: 24px
+
+          &.compact
+            gap: 12px
+
+          > %m-tile-grid
+            gap: 24px
+
+            &.compact
+              gap: 12px
+
+  @include adaptive.is-gt-medium
+    margin: 0 24px
+    gap: 96px
+
+    > %m-section-grid
+      margin: auto
+      width: 100%
+      max-width: conversion.to-px(adaptive.width(max-medium))
+
+      &.expanded
+        width: 100%
+        max-width: conversion.to-px(adaptive.width(expanded))
+
+      &.full
+        width: 100%
+        max-width: 100%
+
+@include adaptive.is-compact
+  .is-gt-compact,
+  .is-small,
+  .is-gt-small,
+  .is-medium,
+  .is-gt-medium,
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-gt-compact
+  .is-compact
+    display: none !important
+
+@include adaptive.is-small
+  .is-compact,
+  .is-lt-small,
+  .is-gt-small,
+  .is-medium,
+  .is-gt-medium,
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-gt-small
+  .is-compact,
+  .is-lt-small,
+  .is-small
+    display: none !important
+
+@include adaptive.is-lt-medium
+  .is-medium,
+  .is-gt-medium,
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-medium
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-gt-medium,
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-gt-medium
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-medium
+    display: none !important
+
+@include adaptive.is-lt-large
+  .is-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-large
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-medium,
+  .is-lt-large,
+  .is-gt-large,
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-gt-large
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-medium,
+  .is-lt-large,
+  .is-large
+    display: none !important
+
+@include adaptive.is-lt-expanded
+  .is-expanded
+    display: none !important
+
+@include adaptive.is-expanded
+  .is-compact,
+  .is-lt-small,
+  .is-small,
+  .is-lt-medium,
+  .is-medium,
+  .is-lt-large,
+  .is-large,
+  .is-lt-expanded
+    display: none !important

@@ -30,24 +30,54 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-%is-not-selectable
-  -webkit-touch-callout: none
-  -webkit-user-select: none
-  -khtml-user-select: none
-  -moz-user-select: none
-  -ms-user-select: none
-  user-select: none
+%m-stack
+  margin: 0
+  padding: 0
+  width: 100%
 
-%is-selectable
-  -webkit-touch-callout: text
-  -webkit-user-select: text
-  -khtml-user-select: text
-  -moz-user-select: text
-  -ms-user-select: text
-  user-select: text
+  display: grid
+  align-content: start
+  justify-content: stretch
+  grid-auto-flow: row
 
-%is-nowrap
-  white-space: nowrap
+%m-stack-item
+  position: relative
+  display: grid
+  grid-template-rows: [row-1-start] 1fr [row-1-end row-2-start] max-content [row-2-end]
+  grid-template-columns: [col-1-start] max-content [col-1-end col-2-start] 1fr [col-2-end col-3-start] max-content [col-3-end]
+  list-style-type: none
+  border: none
+  outline: none
 
-%is-ellipsis
-  @extend %is-nowrap
+%m-stack-item-divider
+  grid-row: row-2-start / row-2-end
+  grid-column: col-1-start / col-3-end
+
+%m-stack-item-leading,
+%m-stack-item-body,
+%m-stack-item-trailing
+  display: grid
+
+%m-stack-item-leading,
+%m-stack-item-trailing
+  align-content: center
+  justify-content: stretch
+  grid-auto-columns: minmax(max-content, 1fr)
+  grid-auto-flow: column
+
+%m-stack-item-body
+  align-content: center
+  justify-content: stretch
+  grid-auto-flow: row
+
+%m-stack-item-trailing
+  grid-row: row-1-start / row-1-end
+  grid-column: col-3-start / col-3-end
+
+%m-stack-item-body
+  grid-row: row-1-start / row-1-end
+  grid-column: col-2-start / col-2-end
+
+%m-stack-item-leading
+  grid-row: row-1-start / row-1-end
+  grid-column: col-1-start / col-1-end

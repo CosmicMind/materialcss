@@ -30,24 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6
-  margin: 0
-  width: 100%
-
-p
-  margin: 24px 0
-
-a
-  color: inherit
-  text-decoration: none
-
-  &:hover
-    text-decoration: none
+@import './selection'
 
 %m-typography
   @extend %is-selectable
@@ -175,93 +158,3 @@ a
   font-size: 12px
   line-height: 16px
   letter-spacing: 0.4px
-
-.m-typography
-  @extend %m-typography
-
-  &.m-display
-    @extend %m-typography-display
-
-    &.large
-      @extend %m-typography-display-large
-
-    &,
-    &.medium
-      @extend %m-typography-display-medium
-
-    &.small
-      @extend %m-typography-display-small
-
-  &.m-headline
-    @extend %m-typography-headline
-
-    &.large
-      @extend %m-typography-headline-large
-
-    &,
-    &.medium
-      @extend %m-typography-headline-medium
-
-    &.small
-      @extend %m-typography-headline-small
-
-  &.m-title
-    @extend %m-typography-title
-
-    &.large
-      @extend %m-typography-title-large
-
-    &,
-    &.medium
-      @extend %m-typography-title-medium
-
-    &.small
-      @extend %m-typography-title-small
-
-    + .m-body
-      margin-top: 16px
-
-  &.m-label
-    @extend %m-typography-label
-
-    &.large
-      @extend %m-typography-label-large
-
-    &,
-    &.medium
-      @extend %m-typography-label-medium
-
-    &.small
-      @extend %m-typography-label-small
-
-    + .m-title
-        margin-top: 16px
-
-  &.m-body
-    @extend %m-typography-body
-
-    &.large
-      @extend %m-typography-body-large
-
-    &,
-    &.medium
-      @extend %m-typography-body-medium
-
-    &.small
-      @extend %m-typography-body-small
-
-    + .m-body
-      margin-top: 16px
-
-  &.m-link
-    @extend %m-typography-link
-
-    &.large
-      @extend %m-typography-link-large
-
-    &,
-    &.medium
-      @extend %m-typography-link-medium
-
-    &.small
-      @extend %m-typography-link-small
