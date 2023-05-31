@@ -74,6 +74,7 @@ export default defineConfig(() => ({
 	},
 	plugins,
 	build: {
+		minify,
 		emptyOutDir,
 		lib: {
 			name,
@@ -82,8 +83,14 @@ export default defineConfig(() => ({
 			fileName,
 		},
 		rollupOptions: {
-
+			output: {
+				assetFileNames: (info): string => {
+					if ('style.css' === info.name) {
+						return 'lib.css'
+					}
+					return info.name || 'build-filename-undefined'
+				},
+			},
 		},
-		minify,
 	},
 }))
