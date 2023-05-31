@@ -58,7 +58,7 @@ const alias = {
 const staticTargets = [
 	{
 		src: `${srcDir}/lib/*`,
-		dest: './lib',
+		dest: './sass',
 	}
 ]
 
