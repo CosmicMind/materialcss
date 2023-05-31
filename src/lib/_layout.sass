@@ -315,8 +315,14 @@
         > %m-column-grid
           gap: 24px
 
+          &.compact
+            gap: 12px
+
           > %m-tile-grid
             gap: 24px
+
+            &.compact
+              gap: 12px
 
   @include adaptive.is-gt-medium
     margin: 0 24px
@@ -327,9 +333,13 @@
       width: 100%
       max-width: conversion.to-px(adaptive.width(max-medium))
 
-      &.full
+      &.expanded
         width: 100%
         max-width: conversion.to-px(adaptive.width(expanded))
+
+      &.full
+        width: 100%
+        max-width: 100%
 
 @include adaptive.is-compact
   .is-gt-compact,
