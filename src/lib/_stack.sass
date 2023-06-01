@@ -30,15 +30,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
+@import './block'
+
 %m-stack
+  @extend %m-block-flow-row
+  @extend %m-align-content-start
+  @extend %m-justify-content-stretch
+
   margin: 0
   padding: 0
   width: 100%
-
-  display: grid
-  align-content: start
-  justify-content: stretch
-  grid-auto-flow: row
 
 %m-stack-item
   position: relative
@@ -56,19 +58,15 @@
 %m-stack-item-leading,
 %m-stack-item-body,
 %m-stack-item-trailing
-  display: grid
+  @extend %m-align-content-center
+  @extend %m-justify-content-stretch
 
 %m-stack-item-leading,
 %m-stack-item-trailing
-  align-content: center
-  justify-content: stretch
-  grid-auto-columns: minmax(max-content, 1fr)
-  grid-auto-flow: column
+  @extend %m-block-flow-column
 
 %m-stack-item-body
-  align-content: center
-  justify-content: stretch
-  grid-auto-flow: row
+  @extend %m-block-flow-row
 
 %m-stack-item-trailing
   grid-row: row-1-start / row-1-end
