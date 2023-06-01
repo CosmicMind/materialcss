@@ -57,8 +57,10 @@ $max-large-width-value: 1439
 $max-large-width: conversion.to-px($max-large-width-value)
 
 /* 1440+ */
-$expanded-width-value: $max-large-width-value + 1
-$expanded-width: conversion.to-px($expanded-width-value)
+$min-expanded-width-value: $max-large-width-value + 1
+$min-expanded-width: conversion.to-px($min-expanded-width-value)
+$max-expanded-width-value: 1920
+$max-expanded-width: conversion.to-px($max-expanded-width-value)
 
 @mixin is-compact
   @media (max-width: $compact-width)
@@ -97,7 +99,7 @@ $expanded-width: conversion.to-px($expanded-width-value)
     @content
 
 @mixin is-gt-large
-  @media (min-width: $expanded-width)
+  @media (min-width: $min-expanded-width)
     @content
 
 @mixin is-lt-expanded
@@ -105,7 +107,7 @@ $expanded-width: conversion.to-px($expanded-width-value)
     @content
 
 @mixin is-expanded
-  @media (min-width: $expanded-width)
+  @media (min-width: $min-expanded-width)
     @content
 
 @mixin is-portrait
@@ -120,7 +122,7 @@ $expanded-width: conversion.to-px($expanded-width-value)
   @media (hover: hover)
     @content
 
-$measurements: (compact: $compact-width-value, min-small: $min-small-width-value, max-small: $max-small-width-value, min-medium: $min-medium-width-value, max-medium: $max-medium-width-value, min-large: $min-large-width-value, max-large: $max-large-width-value, expanded: $expanded-width-value)
+$measurements: (compact: $compact-width-value, min-small: $min-small-width-value, max-small: $max-small-width-value, min-medium: $min-medium-width-value, max-medium: $max-medium-width-value, min-large: $min-large-width-value, max-large: $max-large-width-value, min-expanded: $min-expanded-width-value, max-expanded: $max-expanded-width-value)
 
 @function width($key)
   @return map.get($measurements, $key)
