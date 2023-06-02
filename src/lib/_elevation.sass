@@ -30,38 +30,20 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-%elevation-0
-  background: rgb(var(--elevation-0)), rgb(var(--surface))
+@function none()
+  @return linear-gradient(0deg, rgba(var(--md-sys-color-surface-tint), 0), rgba(var(--md-sys-color-surface-tint), 0))
 
-.elevation-0
-  @extend %elevation-0
+@function lowest()
+  @return linear-gradient(0deg, rgba(var(--md-sys-color-surface-tint), 0.05), rgba(var(--md-sys-color-surface-tint), 0.05))
 
-%elevation-1
-  background: var(--elevation-1), rgb(var(--surface))
+@function low()
+  @return linear-gradient(0deg, rgba(var(--md-sys-color-surface-tint), 0.08), rgba(var(--md-sys-color-surface-tint), 0.08))
 
-.elevation-1
-  @extend %elevation-1
+@function base()
+  @return linear-gradient(0deg, rgba(var(--md-sys-color-surface-tint), 0.11), rgba(var(--md-sys-color-surface-tint), 0.11))
 
-%elevation-2
-  background: var(--elevation-2), rgb(var(--surface))
+@function high()
+  @return linear-gradient(0deg, rgba(var(--md-sys-color-surface-tint), 0.12), rgba(var(--md-sys-color-surface-tint), 0.12))
 
-.elevation-2
-  @extend %elevation-2
-
-%elevation-3
-  background: var(--elevation-3), rgb(var(--surface))
-
-.elevation-3
-  @extend %elevation-3
-
-%elevation-4
-  background: var(--elevation-4), rgb(var(--surface))
-
-.elevation-4
-  @extend %elevation-4
-
-%elevation-5
-  background: var(--elevation-5), rgb(var(--surface))
-
-.elevation-5
-  @extend %elevation-5
+@function highest()
+  @return linear-gradient(0deg, rgba(var(--md-sys-color-surface-tint), 0.14), rgba(var(--md-sys-color-surface-tint), 0.14))

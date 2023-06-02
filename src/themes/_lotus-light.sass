@@ -130,79 +130,57 @@ $surface-bright: #FEF7FF
 $surface-bright-rgb: color.hex-to-rgb($surface-bright)
 $surface-dim: #DED8E1
 $surface-dim-rgb: color.hex-to-rgb($surface-dim)
-$shadow-0: 0 0 0 rgba($scrim, 0), 0 0 0 0 rgba($scrim, 0)
-$shadow-1: 0px 1px 2px rgba($scrim, 0.3), 0px 1px 3px 1px rgba($scrim, 0.15)
-$shadow-2: 0px 1px 2px rgba($scrim, 0.3), 0px 2px 6px 2px rgba($scrim, 0.15)
-$shadow-3: 0px 4px 8px 3px rgba($scrim, 0.15), 0px 1px 3px rgba($scrim, 0.3)
-$shadow-4: 0px 6px 10px 4px rgba($scrim, 0.15), 0px 2px 3px rgba($scrim, 0.3)
-$shadow-5: 0px 8px 12px 6px rgba($scrim, 0.15), 0px 4px 4px rgba($scrim, 0.3)
-$elevation-0: linear-gradient(0deg, rgba($surface-tint, 0), rgba($surface-tint, 0))
-$elevation-1: linear-gradient(0deg, rgba($surface-tint, 0.05), rgba($surface-tint, 0.05))
-$elevation-2: linear-gradient(0deg, rgba($surface-tint, 0.08), rgba($surface-tint, 0.08))
-$elevation-3: linear-gradient(0deg, rgba($surface-tint, 0.11), rgba($surface-tint, 0.11))
-$elevation-4: linear-gradient(0deg, rgba($surface-tint, 0.12), rgba($surface-tint, 0.12))
-$elevation-5: linear-gradient(0deg, rgba($surface-tint, 0.14), rgba($surface-tint, 0.14))
+
 
 .lotus
   &.theme-light
-    --primary: #{$primary-rgb}
-    --on-primary: #{$on-primary-rgb}
-    --primary-container: #{$primary-container-rgb}
-    --on-primary-container: #{$on-primary-container-rgb}
-    --primary-fixed: #{$primary-fixed-rgb}
-    --on-primary-fixed: #{$on-primary-fixed-rgb}
-    --primary-fixed-dim: #{$primary-fixed-dim-rgb}
-    --on-primary-fixed-variant: #{$on-primary-fixed-variant-rgb}
-    --secondary: #{$secondary-rgb}
-    --on-secondary: #{$on-secondary-rgb}
-    --secondary-container: #{$secondary-container-rgb}
-    --on-secondary-container: #{$on-secondary-container-rgb}
-    --secondary-fixed: #{$secondary-fixed-rgb}
-    --on-secondary-fixed: #{$on-secondary-fixed-rgb}
-    --secondary-fixed-dim: #{$secondary-fixed-dim-rgb}
-    --on-secondary-fixed-variant: #{$on-secondary-fixed-variant-rgb}
-    --tertiary: #{$tertiary-rgb}
-    --on-tertiary: #{$on-tertiary-rgb}
-    --tertiary-container: #{$tertiary-container-rgb}
-    --on-tertiary-container: #{$on-tertiary-container-rgb}
-    --tertiary-fixed: #{$tertiary-fixed-rgb}
-    --on-tertiary-fixed: #{$on-tertiary-fixed-rgb}
-    --tertiary-fixed-dim: #{$tertiary-fixed-dim-rgb}
-    --on-tertiary-fixed-variant: #{$on-tertiary-fixed-variant-rgb}
-    --error: #{$error-rgb}
-    --on-error: #{$on-error-rgb}
-    --error-container: #{$error-container-rgb}
-    --on-error-container: #{$on-error-container-rgb}
-    --outline: #{$outline-rgb}
-    --background: #{$background-rgb}
-    --on-background: #{$on-background-rgb}
-    --surface: #{$surface-rgb}
-    --on-surface: #{$on-surface-rgb}
-    --surface-variant: #{$surface-variant-rgb}
-    --on-surface-variant: #{$on-surface-variant-rgb}
-    --inverse-surface: #{$inverse-surface-rgb}
-    --inverse-on-surface: #{$inverse-on-surface-rgb}
-    --inverse-primary: #{$inverse-primary-rgb}
-    --shadow: #{$shadow-rgb}
-    --surface-tint: #{$surface-tint-rgb}
-    --outline-variant: #{$outline-variant-rgb}
-    --scrim: #{$scrim-rgb}
-    --surface-container-highest: #{$surface-container-highest-rgb}
-    --surface-container-high: #{$surface-container-high-rgb}
-    --surface-container: #{$surface-container-rgb}
-    --surface-container-low: #{$surface-container-low-rgb}
-    --surface-container-lowest: #{$surface-container-lowest-rgb}
-    --surface-bright: #{$surface-bright-rgb}
-    --surface-dim: #{$surface-dim-rgb}
-    --shadow-0: #{$shadow-0}
-    --shadow-1: #{$shadow-1}
-    --shadow-2: #{$shadow-2}
-    --shadow-3: #{$shadow-3}
-    --shadow-4: #{$shadow-4}
-    --shadow-5: #{$shadow-5}
-    --elevation-0: #{$elevation-0}
-    --elevation-1: #{$elevation-1}
-    --elevation-2: #{$elevation-2}
-    --elevation-3: #{$elevation-3}
-    --elevation-4: #{$elevation-4}
-    --elevation-5: #{$elevation-5}
+    --md-sys-color-primary: #{$primary-rgb}
+    --md-sys-color-on-primary: #{$on-primary-rgb}
+    --md-sys-color-primary-container: #{$primary-container-rgb}
+    --md-sys-color-on-primary-container: #{$on-primary-container-rgb}
+    --md-sys-color-primary-fixed: #{$primary-fixed-rgb}
+    --md-sys-color-on-primary-fixed: #{$on-primary-fixed-rgb}
+    --md-sys-color-primary-fixed-dim: #{$primary-fixed-dim-rgb}
+    --md-sys-color-on-primary-fixed-variant: #{$on-primary-fixed-variant-rgb}
+    --md-sys-color-secondary: #{$secondary-rgb}
+    --md-sys-color-on-secondary: #{$on-secondary-rgb}
+    --md-sys-color-secondary-container: #{$secondary-container-rgb}
+    --md-sys-color-on-secondary-container: #{$on-secondary-container-rgb}
+    --md-sys-color-secondary-fixed: #{$secondary-fixed-rgb}
+    --md-sys-color-on-secondary-fixed: #{$on-secondary-fixed-rgb}
+    --md-sys-color-secondary-fixed-dim: #{$secondary-fixed-dim-rgb}
+    --md-sys-color-on-secondary-fixed-variant: #{$on-secondary-fixed-variant-rgb}
+    --md-sys-color-tertiary: #{$tertiary-rgb}
+    --md-sys-color-on-tertiary: #{$on-tertiary-rgb}
+    --md-sys-color-tertiary-container: #{$tertiary-container-rgb}
+    --md-sys-color-on-tertiary-container: #{$on-tertiary-container-rgb}
+    --md-sys-color-tertiary-fixed: #{$tertiary-fixed-rgb}
+    --md-sys-color-on-tertiary-fixed: #{$on-tertiary-fixed-rgb}
+    --md-sys-color-tertiary-fixed-dim: #{$tertiary-fixed-dim-rgb}
+    --md-sys-color-on-tertiary-fixed-variant: #{$on-tertiary-fixed-variant-rgb}
+    --md-sys-color-error: #{$error-rgb}
+    --md-sys-color-error-container: #{$error-container-rgb}
+    --md-sys-color-on-error: #{$on-error-rgb}
+    --md-sys-color-on-error-container: #{$on-error-container-rgb}
+    --md-sys-color-background: #{$background-rgb}
+    --md-sys-color-on-background: #{$on-background-rgb}
+    --md-sys-color-outline: #{$outline-rgb}
+    --md-sys-color-inverse-on-surface: #{$inverse-on-surface-rgb}
+    --md-sys-color-inverse-surface: #{$inverse-surface-rgb}
+    --md-sys-color-inverse-primary: #{$inverse-primary-rgb}
+    --md-sys-color-shadow: #{$shadow-rgb}
+    --md-sys-color-surface-tint: #{$surface-tint-rgb}
+    --md-sys-color-outline-variant: #{$outline-variant-rgb}
+    --md-sys-color-scrim: #{$scrim-rgb}
+    --md-sys-color-surface: #{$surface-rgb}
+    --md-sys-color-on-surface: #{$on-surface-rgb}
+    --md-sys-color-surface-variant: #{$surface-variant-rgb}
+    --md-sys-color-on-surface-variant: #{$on-surface-variant-rgb}
+    --md-sys-color-surface-container-highest: #{$surface-container-highest-rgb}
+    --md-sys-color-surface-container-high: #{$surface-container-high-rgb}
+    --md-sys-color-surface-container: #{$surface-container-rgb}
+    --md-sys-color-surface-container-low: #{$surface-container-low-rgb}
+    --md-sys-color-surface-container-lowest: #{$surface-container-lowest-rgb}
+    --md-sys-color-surface-dim: #{$surface-dim-rgb}
+    --md-sys-color-surface-bright: #{$surface-bright-rgb}
+

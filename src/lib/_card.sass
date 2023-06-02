@@ -30,7 +30,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@use './conversion'
+@use './shadow'
+@use './elevation'
+
+@import './selection'
 
 %m-card
   @extend %is-not-selectable
@@ -61,156 +64,116 @@
   &.disabled:not(.hovered):not(.focused):not(.pressed)
     cursor: not-allowed
     pointer-events: all !important
-    box-shadow: none
+    box-shadow: shadow.none()
 
   &.m-elevated
     &,
     &.enabled
-      background: var(--elevation-1), rgb(var(--surface))
-      box-shadow: var(--shadow-1)
+      background: elevation.lowest(), rgb(var(--md-sys-color-surface))
+      box-shadow: shadow.lowest()
 
       &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
       &.hovered
         cursor: pointer
 
-        background: var(--elevation-2), rgb(var(--surface))
-        box-shadow: var(--shadow-2)
+        background: elevation.low(), rgb(var(--md-sys-color-surface))
+        box-shadow: shadow.low()
 
         &::before
-          background: rgba(var(--on-surface), 8%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 8%)
 
       &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
       &.focused
         &::before
-          background: rgba(var(--on-surface), 12%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
       &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
       &.pressed
         &::before
-          background: rgba(var(--on-surface), 12%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
       &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
-        background: var(--elevation-3), rgb(var(--surface))
-        box-shadow: var(--shadow-3)
+        background: elevation.base(), rgb(var(--md-sys-color-surface))
+        box-shadow: shadow.base()
 
         &::before
-          background: rgba(var(--on-surface), 12%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
       &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
       &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
       &.disabled:not(.hovered):not(.focused):not(.pressed:not(.dragged))
-        box-shadow: var(--shadow-1)
+        box-shadow: shadow.lowest()
 
   &.m-filled
     &,
     &.enabled
-      background: rgb(var(--elevation-0)), rgb(var(--surface-variant))
-      box-shadow: rgb(var(--shadow-0))
+      background: elevation.none(), rgb(var(--md-sys-color-surface-variant))
+      box-shadow: shadow.none()
 
       *
-        box-shadow: rgb(var(--shadow-0))
+        box-shadow: shadow.none()
 
       &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
       &.hovered
         cursor: pointer
 
-        background: var(--elevation-1), rgb(var(--surface-variant))
-        box-shadow: var(--shadow-1)
+        background: elevation.lowest(), rgb(var(--md-sys-color-surface-variant))
+        box-shadow: shadow.lowest()
 
         &::before
-          background: rgba(var(--on-surface), 8%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 8%)
 
       &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
       &.focused
         &::before
-          background: rgba(var(--on-surface), 12%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
       &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
       &.pressed
         &::before
-          background: rgba(var(--on-surface), 12%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
       &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
-        background: var(--elevation-3), rgb(var(--surface-variant))
-        box-shadow: var(--shadow-3)
+        background: elevation.base(), rgb(var(--md-sys-color-surface-variant))
+        box-shadow: shadow.base()
 
         &::before
-          background: rgba(var(--on-surface), 12%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
   &.m-outlined
     border: 1px solid
 
     &,
     &.enabled
-      background: rgb(var(--elevation-0)), rgb(var(--surface))
-      border-color: rgb(var(--outline))
-      box-shadow: rgb(var(--shadow-0))
-
-      *
-        box-shadow: rgb(var(--shadow-0))
+      background: elevation.none(), rgb(var(--md-sys-color-surface))
+      border-color: rgb(var(--md-sys-color-outline))
 
       &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
       &.hovered
         cursor: pointer
 
-        background: var(--elevation-1), rgb(var(--surface))
-        box-shadow: var(--shadow-1)
+        background: elevation.lowest(), rgb(var(--md-sys-color-surface))
+        box-shadow: shadow.lowest()
 
         &::before
-          background: rgba(var(--on-surface), 8%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 8%)
 
       &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
       &.focused
         &::before
-          background: rgba(var(--on-surface), 12%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
       &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
       &.pressed
         &::before
-          background: rgba(var(--on-surface), 12%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
       &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
-        background: var(--elevation-3), rgb(var(--surface))
-        box-shadow: var(--shadow-3)
+        background: elevation.base(), rgb(var(--md-sys-color-surface))
+        box-shadow: shadow.base()
 
         &::before
-          background: rgba(var(--on-surface), 12%)
-
-        *
-          box-shadow: rgb(var(--shadow-0))
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
   &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
   &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
@@ -219,6 +182,4 @@
 
     *
       background: transparent
-
-      box-shadow: rgb(var(--shadow-0))
-      color: var(--on-surface-variant)
+      color: var(--md-sys-color-on-surface-variant)
