@@ -1,6 +1,6 @@
 {
   "name": "@cosmicmind/materialcss",
-  "version": "0.0.1-rc-060123-9",
+  "version": "0.0.1-rc-060123-9-a",
   "description": "A Material Design framework in CSS.",
   "keywords": [],
   "author": {
@@ -23,8 +23,10 @@
       "import": "./dist/lib-es.js",
       "require": "./dist/lib-cjs.cjs"
     },
-    "./dist/lib": "./dist/lib.css",
-    "./dist/sass/*": "./dist/sass/*"
+    "./dist/material": "./dist/material.css",
+    "./dist/sass/core": "./dist/sass/core.sass",
+    "./dist/sass/lib/*": "./dist/sass/lib/*",
+    "./dist/sass/themes/*": "./dist/sass/themes/*"
   },
   "files": [
     "dist",

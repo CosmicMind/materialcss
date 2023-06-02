@@ -58,6 +58,14 @@ const alias = {
 const staticTargets = [
 	{
 		src: `${srcDir}/lib/*`,
+		dest: './sass/lib',
+	},
+	{
+		src: `${srcDir}/themes/*`,
+		dest: './sass/themes',
+	},
+	{
+		src: `${srcDir}/_core.sass`,
 		dest: './sass',
 	}
 ]
@@ -86,7 +94,7 @@ export default defineConfig(() => ({
 			output: {
 				assetFileNames: (info): string => {
 					if ('style.css' === info.name) {
-						return 'lib.css'
+						return 'material.css'
 					}
 					return info.name || 'build-filename-undefined'
 				},
