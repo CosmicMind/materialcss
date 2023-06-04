@@ -30,7 +30,8 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@use './conversion'
+@import './typography'
+@import './selection'
 
 %m-text-field
   display: grid
@@ -175,24 +176,6 @@
       > .m-field-input
         @extend %m-text-field-input
 
-        &:-webkit-autofill
-          animation-name: onAutoFillStart
-
-        &:not(:-webkit-autofill)
-          animation-name: onAutoFillCancel
-
-        @keyframes onAutoFillStart
-          from
-            /** */
-          to
-            /** */
-
-        @keyframes onAutoFillCancel
-          from
-            /** */
-          to
-            /** */
-
   > .m-field-support
     @extend %m-text-field-support
 
@@ -259,17 +242,17 @@
       > .m-field-leading,
       > .m-field-trailing
         > .m-icon
-          color: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 38%)
+          color: rgba(var(--md-sys-color-on-surface), 38%)
 
       > .m-field-body
         > .m-typography
           &.m-label
-            color: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 38%)
+            color: rgba(var(--md-sys-color-on-surface), 38%)
 
         > .m-field-input
           pointer-events: none !important
 
-          color: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 38%)
+          color: rgba(var(--md-sys-color-on-surface), 38%)
 
   &.m-filled
     > .m-field-control
@@ -335,8 +318,8 @@
             &:-webkit-autofill:hover,
             &:-webkit-autofill:focus,
             &:-webkit-autofill:active
-              -webkit-text-fill-color: rgb(var(--md-sys-color-on-surface)) !important
-              -webkit-box-shadow: 0 0 0 30px inset rgb(var(--md-sys-color-surface-variant)) !important
+              -webkit-text-fill-color: rgb(var(--md-sys-color-on-surface))
+              -webkit-box-shadow: 0 0 0 30px inset rgb(var(--md-sys-color-surface-container-lowest))
 
       > .m-field-support
         > .m-typography
@@ -373,7 +356,7 @@
           &::before
             display: block
 
-            background: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 8%)
+            background: rgba(var(--md-sys-color-on-surface), 8%)
 
         &.has-error
           > .m-field-control
@@ -422,8 +405,8 @@
     &[disabled="true"]:not(.hovered):not(.focused),
     &.disabled:not(.hovered):not(.focused)
       > .m-field-control
-        background: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 4%)
-        border-bottom-color: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 38%)
+        background: rgba(var(--md-sys-color-on-surface), 4%)
+        border-bottom-color: rgba(var(--md-sys-color-on-surface), 38%)
 
         > .m-field-body
           > .m-field-input
@@ -431,14 +414,14 @@
             &:-webkit-autofill:hover,
             &:-webkit-autofill:focus,
             &:-webkit-autofill:active
-              -webkit-text-fill-color: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 38%) !important
-              -webkit-box-shadow: 0 0 0 30px inset conversion.hex-to-rgba(var(--md-sys-color-on-surface), 4%) !important
+              -webkit-text-fill-color: rgba(var(--md-sys-color-on-surface), 38%)
+              -webkit-box-shadow: 0 0 0 30px inset rgba(var(--md-sys-color-surface-container-lowest), 4%)
 
       > .m-field-support
         > .m-typography
           &.m-body,
           &.m-label
-            color: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 38%)
+            color: rgba(var(--md-sys-color-on-surface), 38%)
 
   &.m-outlined
     > .m-field-control
@@ -508,8 +491,8 @@
             &:-webkit-autofill:hover,
             &:-webkit-autofill:focus,
             &:-webkit-autofill:active
-              -webkit-text-fill-color: rgb(var(--md-sys-color-on-surface-variant)) !important
-              -webkit-box-shadow: 0 0 0 30px inset rgb(var(--md-sys-color-surface)) !important
+              -webkit-text-fill-color: rgb(var(--md-sys-color-on-surface-variant))
+              -webkit-box-shadow: 0 0 0 30px inset rgb(var(--md-sys-color-surface-container-lowest))
 
       > .m-field-support
         > .m-typography
@@ -601,7 +584,7 @@
     &[disabled="true"]:not(.hovered):not(.focused),
     &.disabled:not(.hovered):not(.focused)
       > .m-field-control
-        border-color: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 12%)
+        border-color: rgba(var(--md-sys-color-on-surface), 12%)
 
         > .m-field-body
           > .m-field-input
@@ -609,10 +592,10 @@
             &:-webkit-autofill:hover,
             &:-webkit-autofill:focus,
             &:-webkit-autofill:active
-              -webkit-text-fill-color: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 38%) !important
+              -webkit-text-fill-color: rgba(var(--md-sys-color-on-surface), 38%)
 
       > .m-field-support
         > .m-typography
           &.m-body,
           &.m-label
-            color: conversion.hex-to-rgba(var(--md-sys-color-on-surface), 38%)
+            color: rgba(var(--md-sys-color-on-surface), 38%)
