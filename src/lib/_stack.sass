@@ -61,6 +61,8 @@
   @extend %m-align-content-center
   @extend %m-justify-content-stretch
 
+  grid-row: row-1-start / row-1-end
+
 %m-stack-item-leading,
 %m-stack-item-trailing
   @extend %m-block-flow-column
@@ -68,14 +70,11 @@
 %m-stack-item-body
   @extend %m-block-flow-row
 
-%m-stack-item-trailing
-  grid-row: row-1-start / row-1-end
-  grid-column: col-3-start / col-3-end
+%m-stack-item-leading
+  grid-column: col-1-start / col-1-end
 
 %m-stack-item-body
-  grid-row: row-1-start / row-1-end
   grid-column: col-2-start / col-2-end
 
-%m-stack-item-leading
-  grid-row: row-1-start / row-1-end
-  grid-column: col-1-start / col-1-end
+%m-stack-item-trailing
+  grid-column: col-3-start / col-3-end
