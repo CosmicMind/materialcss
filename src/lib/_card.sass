@@ -68,112 +68,109 @@
 
   &.m-elevated
     &,
-    &.enabled
+    &.enabled:not(.hovered):not(.pressed):not(.dragged):not(.disabled)
       background: elevation.lowest(), rgb(var(--md-sys-color-surface))
       box-shadow: shadow.lowest()
 
-      &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
-      &.hovered
-        cursor: pointer
+    &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
+    &.hovered
+      cursor: pointer
 
-        background: elevation.low(), rgb(var(--md-sys-color-surface))
-        box-shadow: shadow.low()
+      background: elevation.low(), rgb(var(--md-sys-color-surface))
+      box-shadow: shadow.low()
 
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 8%)
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 8%)
 
-      &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
-      &.focused
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 12%)
+    &:focus:not(.enabled):not(.hovered):not(.pressed):not(.dragged):not(.disabled),
+    &.focused
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
 
-      &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
-      &.pressed
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 12%)
+    &:active:not(.enabled):not(.hovered):not(.focused):not(.dragged):not(.disabled),
+    &.pressed
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
 
-      &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
-        background: elevation.base(), rgb(var(--md-sys-color-surface))
-        box-shadow: shadow.base()
+    &.dragged:not(.enabled):not(.hovered):not(.focused):not(.pressed):not(.disabled)
+      background: elevation.base(), rgb(var(--md-sys-color-surface))
+      box-shadow: shadow.base()
 
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 12%)
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
 
-      &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
-      &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
-      &.disabled:not(.hovered):not(.focused):not(.pressed:not(.dragged))
-        box-shadow: shadow.lowest()
+    &:disabled:not(.enabled):not(.hovered):not(.focused):not(.pressed):not(.dragged),
+    &[disabled]:not(.enabled):not(.hovered):not(.focused):not(.pressed):not(.dragged),
+    &.disabled:not(.enabled):not(.hovered):not(.focused):not(.pressed:not(.dragged))
+      box-shadow: shadow.lowest()
 
   &.m-filled
     &,
-    &.enabled
+    &.enabled:not(.hovered):not(.pressed):not(.dragged):not(.disabled)
       background: elevation.none(), rgb(var(--md-sys-color-surface-variant))
       box-shadow: shadow.none()
 
-      *
-        box-shadow: shadow.none()
+    &:hover:not(.enabled):not(.focused):not(.pressed):not(.dragged):not(.disabled),
+    &.hovered
+      cursor: pointer
 
-      &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
-      &.hovered
-        cursor: pointer
+      background: elevation.lowest(), rgb(var(--md-sys-color-surface-variant))
+      box-shadow: shadow.lowest()
 
-        background: elevation.lowest(), rgb(var(--md-sys-color-surface-variant))
-        box-shadow: shadow.lowest()
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 8%)
 
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 8%)
+    &:focus:not(.enabled):not(.hovered):not(.pressed):not(.dragged):not(.disabled),
+    &.focused
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
 
-      &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
-      &.focused
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 12%)
+    &:active:not(.enabled):not(.hovered):not(.focused):not(.dragged):not(.disabled),
+    &.pressed
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
 
-      &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
-      &.pressed
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 12%)
+    &.dragged:not(.enabled):not(.hovered):not(.focused):not(.pressed):not(.disabled)
+      background: elevation.base(), rgb(var(--md-sys-color-surface-variant))
+      box-shadow: shadow.base()
 
-      &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
-        background: elevation.base(), rgb(var(--md-sys-color-surface-variant))
-        box-shadow: shadow.base()
-
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 12%)
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
 
   &.m-outlined
     border: 1px solid
 
     &,
-    &.enabled
+    &.enabled:not(.hovered):not(.pressed):not(.dragged):not(.disabled)
       background: elevation.none(), rgb(var(--md-sys-color-surface))
       border-color: rgb(var(--md-sys-color-outline))
 
-      &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
-      &.hovered
-        cursor: pointer
+    &:hover:not(.enabled):not(.focused):not(.pressed):not(.dragged):not(.disabled),
+    &.hovered
+      cursor: pointer
 
-        background: elevation.lowest(), rgb(var(--md-sys-color-surface))
-        box-shadow: shadow.lowest()
+      background: elevation.lowest(), rgb(var(--md-sys-color-surface))
+      box-shadow: shadow.lowest()
 
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 8%)
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 8%)
 
-      &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
-      &.focused
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 12%)
+    &:focus:not(.enabled):not(.hovered):not(.pressed):not(.dragged):not(.disabled),
+    &.focused
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
 
-      &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
-      &.pressed
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 12%)
+    &:active:not(.enabled):not(.hovered):not(.focused):not(.dragged):not(.disabled),
+    &.pressed
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
 
-      &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
-        background: elevation.base(), rgb(var(--md-sys-color-surface))
-        box-shadow: shadow.base()
+    &.dragged:not(.enabled):not(.hovered):not(.focused):not(.pressed):not(.disabled)
+      background: elevation.base(), rgb(var(--md-sys-color-surface))
+      box-shadow: shadow.base()
 
-        &::before
-          background: rgba(var(--md-sys-color-on-surface), 12%)
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
 
   &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
   &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
