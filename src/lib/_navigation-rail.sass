@@ -123,41 +123,41 @@
             &.m-label
               color: rgb(var(--md-sys-color-on-surface))
 
-        &:hover:not(.focused):not(.pressed):not(.disabled),
-        &.hovered:not(.focused):not(.pressed):not(.disabled)
+      &:hover:not(.enabled):not(.focused):not(.pressed):not(.disabled),
+      &.hovered
+        > .m-icon
+          &::before
+            background: rgba(var(--md-sys-color-on-surface-variant), 8%)
+
+        &.selected
           > .m-icon
             &::before
-              background: rgba(var(--md-sys-color-on-surface-variant), 8%)
+              background: rgba(var(--md-sys-color-on-surface), 8%)
 
-          &.selected
-            > .m-icon
-              &::before
-                background: rgba(var(--md-sys-color-on-surface), 8%)
+      &:focus:not(.enabled):not(.hovered):not(.pressed):not(.disabled),
+      &.focused
+        > .m-icon
+          &::before
+            background: rgba(var(--md-sys-color-on-surface-variant), 12%)
 
-        &:focus:not(.hovered):not(.pressed):not(.disabled),
-        &.focused:not(.hovered):not(.pressed):not(.disabled)
+        &.selected
           > .m-icon
             &::before
-              background: rgba(var(--md-sys-color-on-surface-variant), 12%)
+              background: rgba(var(--md-sys-color-on-surface), 12%)
 
-          &.selected
-            > .m-icon
-              &::before
-                background: rgba(var(--md-sys-color-on-surface), 12%)
+      &:active:not(.enabled):not(.hovered):not(.focused):not(.disabled),
+      &.pressed
+        > .m-icon
+          &::before
+            background: rgba(var(--md-sys-color-on-surface-variant), 12%)
 
-        &:active:not(.hovered):not(.focused):not(.disabled),
-        &.pressed:not(.hovered):not(.focused):not(.disabled)
+        &.selected
           > .m-icon
             &::before
-              background: rgba(var(--md-sys-color-on-surface-variant), 12%)
+              background: rgba(var(--md-sys-color-on-surface), 12%)
 
-          &.selected
-            > .m-icon
-              &::before
-                background: rgba(var(--md-sys-color-on-surface), 12%)
-
-        &:disabled:not(.hovered):not(.focused):not(.pressed),
-        &[disabled]:not(.hovered):not(.focused):not(.pressed),
-        &.disabled:not(.hovered):not(.focused):not(.pressed)
-          > .m-icon
-            color: rgba(var(--md-sys-color-on-surface), 38%)
+      &:disabled:not(.enabled):not(.hovered):not(.focused):not(.pressed),
+      &[disabled]:not(.enabled):not(.hovered):not(.focused):not(.pressed),
+      &.disabled:not(.enabled):not(.hovered):not(.focused):not(.pressed)
+        > .m-icon
+          color: rgba(var(--md-sys-color-on-surface), 38%)

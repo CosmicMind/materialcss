@@ -600,61 +600,61 @@ a
         > .m-icon
           color: rgb(var(--md-sys-color-on-surface-variant))
 
-      &:not(.is-not-interactive)
-        &:hover:not(.focused):not(.pressed):not(.dragged):not(.disabled),
-        &.hovered:not(.focused):not(.pressed):not(.dragged):not(.disabled)
-          cursor: pointer
+    &:not(.is-not-interactive)
+      &:hover:not(.enabled):not(.focused):not(.pressed):not(.dragged):not(.disabled),
+      &.hovered
+        cursor: pointer
 
-          &::before
-            background: rgba(var(--md-sys-color-on-surface), 8%)
+        &::before
+          background: rgba(var(--md-sys-color-on-surface), 8%)
 
-          .m-list-item-leading
-            > .m-icon
-              color: rgb(var(--md-sys-color-on-surface-variant))
+        .m-list-item-leading
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
 
-          .m-list-item-trailing
-            > .m-icon
-              color: rgb(var(--md-sys-color-on-surface-variant))
+        .m-list-item-trailing
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
 
-        &:focus:not(.hovered):not(.pressed):not(.dragged):not(.disabled),
-        &.focused:not(.hovered):not(.pressed):not(.dragged):not(.disabled)
-          &::before
-            background: rgba(var(--md-sys-color-on-surface), 12%)
+      &:focus:not(.enabled):not(.hovered):not(.pressed):not(.dragged):not(.disabled),
+      &.focused
+        &::before
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
-          .m-list-item-leading
-            > .m-icon
-              color: rgb(var(--md-sys-color-on-surface-variant))
+        .m-list-item-leading
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
 
-          .m-list-item-trailing
-            > .m-icon
-              color: rgb(var(--md-sys-color-on-surface-variant))
+        .m-list-item-trailing
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
 
-        &:active:not(.hovered):not(.focused):not(.dragged):not(.disabled),
-        &.pressed:not(.hovered):not(.focused):not(.dragged):not(.disabled)
-          &::before
-            background: rgba(var(--md-sys-color-on-surface), 12%)
+      &:active:not(.enabled):not(.hovered):not(.focused):not(.dragged):not(.disabled),
+      &.pressed
+        &::before
+          background: rgba(var(--md-sys-color-on-surface), 12%)
 
-          .m-list-item-leading
-            > .m-icon
-              color: rgb(var(--md-sys-color-on-surface-variant))
+        .m-list-item-leading
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
 
-          .m-list-item-trailing
-            > .m-icon
-              color: rgb(var(--md-sys-color-on-surface-variant))
+        .m-list-item-trailing
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
 
-        &.dragged:not(.hovered):not(.focused):not(.pressed):not(.disabled)
-          box-shadow: shadow.high()
+      &.dragged:not(.enabled):not(.hovered):not(.focused):not(.pressed):not(.disabled)
+        box-shadow: shadow.high()
 
-          &::before
-            background: rgba(var(--md-sys-color-on-surface), 16%)
+        &::before
+          background: rgba(var(--md-sys-color-on-surface), 16%)
 
-          .m-list-item-leading
-            > .m-icon
-              color: rgb(var(--md-sys-color-on-surface-variant))
+        .m-list-item-leading
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
 
-          .m-list-item-trailing
-            > .m-icon
-              color: rgb(var(--md-sys-color-on-surface-variant))
+        .m-list-item-trailing
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
 
     &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
     &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
