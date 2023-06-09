@@ -37,7 +37,9 @@ import {
 	fileURLToPath,
 } from 'node:url'
 
-import { defineConfig } from 'vite'
+import {
+	defineConfig,
+} from 'vite'
 
 const srcDir = 'src'
 const distDir = 'dist'

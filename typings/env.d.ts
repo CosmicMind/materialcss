@@ -33,7 +33,7 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly VITE_NODE_NAME: string
+  readonly SERVER_NAME: string
 }
 
 interface ImportMeta {
