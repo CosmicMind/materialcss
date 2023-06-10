@@ -31,6 +31,7 @@
  */
 
 @use './adaptive'
+
 @import './bar'
 
 .m-top-app-bar
@@ -38,11 +39,11 @@
 
   @include adaptive.is-lt-medium
     padding: 0 16px
-    grid-auto-rows: minmax(64px, max-content)
+    height: 64px
 
   @include adaptive.is-gt-small
     padding: 0 24px
-    grid-auto-rows: minmax(72px, max-content)
+    height: 72px
 
   &:empty
     height: 0

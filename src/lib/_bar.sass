@@ -32,6 +32,8 @@
 
 @use './adaptive'
 
+@import './selection'
+
 %m-bar-horizontal
   @extend %is-not-selectable
 
@@ -90,29 +92,3 @@
 
 %m-bar-vertical-trailing
   grid-row: row-3-start / row-3-end
-
-.m-bar
-  &,
-  &.horizontal
-    @extend %m-bar-horizontal
-
-    > .m-bar-leading
-      @extend %m-bar-horizontal-leading
-
-    > .m-bar-body
-      @extend %m-bar-horizontal-body
-
-    > .m-bar-trailing
-      @extend %m-bar-horizontal-trailing
-
-  &.vertical
-    @extend %m-bar-vertical
-
-    > .m-bar-leading
-      @extend %m-bar-vertical-leading
-
-    > .m-bar-body
-      @extend %m-bar-vertical-body
-
-    > .m-bar-trailing
-      @extend %m-bar-vertical-trailing
