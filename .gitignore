@@ -4,6 +4,7 @@ ssl
 dist
 coverage
 logs
+local
 .docker
 .fleet
 .idea
