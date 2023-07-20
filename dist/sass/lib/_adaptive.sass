@@ -1,0 +1,128 @@
+/**
+ * BSD 3-Clause License
+ *
+ * Copyright © 2023, Daniel Jonathan <daniel at cosmicmind dot com>
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice, this
+ *    list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * 3. Neither the name of the copyright holder nor the names of its
+ *    contributors may be used to endorse or promote products derived from
+ *    this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES LOSS OF USE, DATA, OR PROFITS OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+@use 'sass:map'
+
+@use './conversion'
+
+/* 0-599+ */
+$compact-width-value: 599
+$compact-width: conversion.to-px($compact-width-value)
+
+/* 600-904 */
+$min-small-width-value: $compact-width-value + 1
+$min-small-width: conversion.to-px($min-small-width-value)
+$max-small-width-value: 904
+$max-small-width: conversion.to-px($max-small-width-value)
+
+/* 905-1239 */
+$min-medium-width-value: $max-small-width-value + 1
+$min-medium-width: conversion.to-px($min-medium-width-value)
+$max-medium-width-value: 1239
+$max-medium-width: conversion.to-px($max-medium-width-value)
+
+/* 1240-1439 */
+$min-large-width-value: $max-medium-width-value + 1
+$min-large-width: conversion.to-px($min-large-width-value)
+$max-large-width-value: 1439
+$max-large-width: conversion.to-px($max-large-width-value)
+
+/* 1440+ */
+$min-expanded-width-value: $max-large-width-value + 1
+$min-expanded-width: conversion.to-px($min-expanded-width-value)
+$max-expanded-width-value: 1920
+$max-expanded-width: conversion.to-px($max-expanded-width-value)
+
+@mixin is-compact
+  @media (max-width: $compact-width)
+    @content
+
+@mixin is-gt-compact
+  @media (min-width: $min-small-width)
+    @content
+
+@mixin is-small
+  @media (min-width: $min-small-width) and (max-width: $max-small-width)
+    @content
+
+@mixin is-gt-small
+  @media (min-width: $min-medium-width)
+    @content
+
+@mixin is-lt-medium
+  @media (max-width: $max-small-width)
+    @content
+
+@mixin is-medium
+  @media (min-width: $min-medium-width) and (max-width: $max-medium-width)
+    @content
+
+@mixin is-gt-medium
+  @media (min-width: $min-large-width)
+    @content
+
+@mixin is-lt-large
+  @media (max-width: $max-medium-width)
+    @content
+
+@mixin is-large
+  @media (min-width: $min-large-width) and (max-width: $max-large-width)
+    @content
+
+@mixin is-gt-large
+  @media (min-width: $min-expanded-width)
+    @content
+
+@mixin is-lt-expanded
+  @media (max-width: $max-large-width)
+    @content
+
+@mixin is-expanded
+  @media (min-width: $min-expanded-width)
+    @content
+
+@mixin is-portrait
+  @media (orientation: portrait)
+    @content
+
+@mixin is-landscape
+  @media (orientation: landscape)
+    @content
+
+@mixin is-hoverable
+  @media (hover: hover)
+    @content
+
+$measurements: (compact: $compact-width-value, min-small: $min-small-width-value, max-small: $max-small-width-value, min-medium: $min-medium-width-value, max-medium: $max-medium-width-value, min-large: $min-large-width-value, max-large: $max-large-width-value, min-expanded: $min-expanded-width-value, max-expanded: $max-expanded-width-value)
+
+@function width($key)
+  @return map.get($measurements, $key)
