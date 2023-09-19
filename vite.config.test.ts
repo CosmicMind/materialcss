@@ -61,7 +61,7 @@ export default defineConfig(() => ({
 			outputFile: `${distDir}/benchmarks.json`,
 		},
 		coverage: {
-			provider: 'c8',
+			provider: 'v8',
 			include: [ `**/${srcDir}/**` ],
 			extension: [ '.ts' ],
 		},
