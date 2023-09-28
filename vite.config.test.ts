@@ -50,7 +50,7 @@ const alias = {
 	'@': fileURLToPath(new URL(srcDir, import.meta.url)),
 }
 
-export default defineConfig(() => ({
+export default defineConfig({
 	resolve: {
 		alias,
 	},
@@ -66,4 +66,4 @@ export default defineConfig(() => ({
 			extension: [ '.ts' ],
 		},
 	},
-}))
+})

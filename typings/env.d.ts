@@ -33,7 +33,7 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly SERVER_NAME: string
+  readonly LIB_NAME: string
 }
 
 interface ImportMeta {
