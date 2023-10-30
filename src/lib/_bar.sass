@@ -71,18 +71,14 @@
   display: grid
   grid-template-rows: [row-1-start] max-content [row-1-end row-2-start] 1fr [row-2-end row-3-start] max-content [row-3-end]
   grid-template-columns: 1fr
-  align-content: center
-  justify-content: center
+  place-items: center
 
 %m-bar-vertical-leading,
 %m-bar-vertical-body,
 %m-bar-vertical-trailing
   display: grid
   grid-auto-flow: row
-  align-items: center
-  align-content: center
-  justify-items: center
-  justify-content: center
+  place-items: center
 
 %m-bar-vertical-leading
   grid-row: row-1-start / row-1-end
