@@ -63,16 +63,11 @@ a.m-button
     right: 0
     display: block
 
-  > .m-icon
-    grid-column: col-1-start / col-1-end
-
   > .m-typography
     @extend %is-not-selectable
 
     &.m-label
       @extend %m-typography-label-large
-
-      grid-column: col-2-start / col-2-end
 
   &:disabled:not(.hovered):not(.focused):not(.pressed),
   &[disabled]:not(.hovered):not(.focused):not(.pressed),
