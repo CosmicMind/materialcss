@@ -37,11 +37,11 @@
   "scripts": {
     "lint": "eslint --fix --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts",
     "build": "run-s build:lib",
-    "build:lib": "vite build --config vite.config.lib.ts --mode ${VITE_MODE:-production}",
+    "build:lib": "vite build --config vite.config.ts --mode ${VITE_MODE:-production}",
     "dev": "run-s dev:lib",
-    "dev:lib": "vite build --config vite.config.lib.ts --mode ${VITE_MODE:-development}",
+    "dev:lib": "vite build --config vite.config.ts --mode ${VITE_MODE:-development}",
     "watch": "run-p watch:lib",
-    "watch:lib": "vite build --watch --config vite.config.lib.ts --mode ${VITE_MODE:-development}",
+    "watch:lib": "vite build --watch --config vite.config.ts --mode ${VITE_MODE:-development}",
     "test": "run-s test:unit",
     "test:unit": "vitest run --config vite.config.test.ts --mode ${VITE_MODE:-test}",
     "test:coverage": "vitest run --coverage --config vite.config.test.ts --mode ${VITE_MODE:-test}"
