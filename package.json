@@ -1,6 +1,6 @@
 {
   "name": "@cosmicmind/materialcss",
-  "version": "0.0.1-rc-120223-9",
+  "version": "0.0.1-rc-120223-9-a",
   "description": "A Material Design framework in CSS.",
   "keywords": [],
   "author": {
@@ -10,7 +10,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cosmicmind/materialcss.git"
+    "url": "git+https://github.com/cosmicmind/materialcss.git"
   },
   "publishConfig": {
     "access": "public"
