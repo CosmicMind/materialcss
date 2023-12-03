@@ -30,23 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import './bar'
+@import '@/includes/toolbar'
 
 .m-toolbar
-  @extend %m-bar-horizontal
-
-  padding: 0 16px
-  height: 64px
-
-  &:empty
-    height: 0
-    visibility: hidden
-
-  > .m-bar-leading
-    @extend %m-bar-horizontal-leading
-
-  > .m-bar-body
-    @extend %m-bar-horizontal-body
-
-  > .m-bar-trailing
-    @extend %m-bar-horizontal-trailing
+  @extend %m-toolbar

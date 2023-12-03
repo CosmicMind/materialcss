@@ -30,21 +30,13 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import './selection'
+@import '@/includes/typography'
 
-%m-typography
-  @extend %is-selectable
-
-  margin: 0
-  padding: 0
-  font-style: normal
-  font-weight: 400
-  display: block
-
-  color: rgb(var(--md-sys-color-on-surface))
+.m-typography
+  @extend %m-typography
 
   &.text-align-left
-    text-align: start
+    text-align: left
 
   &.text-align-center
     text-align: center
@@ -52,93 +44,73 @@
   &.text-align-right
     text-align: end
 
-%m-typography-display,
-%m-typography-headline,
-%m-typography-title,
-%m-typography-body
-  width: 100%
+  &.text-align-justify
+    text-align: justify
 
-%m-typography-display,
-%m-typography-headline,
-%m-typography-title,
-%m-typography-label,
-%m-typography-body,
-%m-typography-link
-  vertical-align: baseline
+  &.m-display
+    @extend %m-typography-display
 
-%m-typography-display-large
-  font-size: 57px
-  line-height: 64px
-  letter-spacing: -0.25px
+    &.large
+      @extend %m-typography-display-large
 
-%m-typography-display-medium
-  font-size: 45px
-  line-height: 52px
+    &,
+    &.medium
+      @extend %m-typography-display-medium
 
-%m-typography-display-small
-  font-size: 36px
-  line-height: 44px
+    &.small
+      @extend %m-typography-display-small
 
-%m-typography-headline-large
-  font-size: 32px
-  line-height: 40px
+  &.m-headline
+    @extend %m-typography-headline
 
-%m-typography-headline-medium
-  font-size: 28px
-  line-height: 36px
+    &.large
+      @extend %m-typography-headline-large
 
-%m-typography-headline-small
-  font-size: 24px
-  line-height: 32px
+    &,
+    &.medium
+      @extend %m-typography-headline-medium
 
-%m-typography-title-large
-  font-size: 22px
-  line-height: 28px
+    &.small
+      @extend %m-typography-headline-small
 
-%m-typography-title-medium
-  font-size: 16px
-  line-height: 24px
-  letter-spacing: 0.15px
+  &.m-title
+    @extend %m-typography-title
 
-%m-typography-title-small
-  font-size: 14px
-  line-height: 20px
-  letter-spacing: 0.1px
+    &.large
+      @extend %m-typography-title-large
 
-%m-typography-label-large
-  font-size: 14px
-  line-height: 20px
-  letter-spacing: 0.1px
+    &,
+    &.medium
+      @extend %m-typography-title-medium
 
-%m-typography-label-medium
-  font-size: 12px
-  line-height: 16px
-  letter-spacing: 0.5px
+    &.small
+      @extend %m-typography-title-small
 
-%m-typography-label-small
-  font-size: 11px
-  line-height: 16px
-  letter-spacing: 0.5px
+  &.m-label
+    @extend %m-typography-label
 
-%m-typography-body-large
-  font-size: 16px
-  line-height: 24px
-  letter-spacing: 0.15px
+    &.large
+      @extend %m-typography-label-large
 
-%m-typography-body-medium
-  font-size: 14px
-  line-height: 20px
-  letter-spacing: 0.25px
+    &,
+    &.medium
+      @extend %m-typography-label-medium
 
-%m-typography-body-small
-  font-size: 12px
-  line-height: 16px
-  letter-spacing: 0.4px
+    &.small
+      @extend %m-typography-label-small
 
-%m-typography-link
-  font-size: inherit
-  line-height: inherit
-  letter-spacing: inherit
-  text-decoration: underline
-  color: rgb(var(--md-sys-color-primary))
-  cursor: pointer
+  &.m-body
+    @extend %m-typography-body
+
+    &.large
+      @extend %m-typography-body-large
+
+    &,
+    &.medium
+      @extend %m-typography-body-medium
+
+    &.small
+      @extend %m-typography-body-small
+
+  &.m-link
+    @extend %m-typography-link

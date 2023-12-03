@@ -30,84 +30,194 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import './stack'
+@use '@/utils/shadow'
 
-%m-list
-  @extend %m-stack
+@import '@/includes/list'
+@import '@/includes/typography'
 
-  &:first-of-type
-    padding-top: 8px
+.m-list
+  @extend %m-list
 
-  &:last-of-type
-    padding-bottom: 8px
+  &.lines-1
+    > .m-list-item
+      .m-list-item-leading,
+      .m-list-item-body,
+      .m-list-item-trailing
+        align-content: center
 
-%m-list-item
-  @extend %m-stack-item
+  &.lines-2
+    > .m-list-item
+      .m-list-item-leading,
+      .m-list-item-body,
+      .m-list-item-trailing
+        align-content: center
 
-  padding: 0 24px 0 16px
-  min-height: 56px
+  &.lines-3
+    > .m-list-item
+      .m-list-item-leading,
+      .m-list-item-body,
+      .m-list-item-trailing
+        align-content: start
 
-  &:not(.is-not-interactive)
-    cursor: pointer
+  > .m-list-item
+    @extend %m-list-item
 
-    &::before
-      content: ' '
-      position: absolute
-      top: 0
-      left: 0
-      bottom: 0
-      right: 0
-      display: block
-      z-index: 0
+    > .m-divider
+      @extend %m-list-item-divider
 
-  > a
-    margin: 0 -24px 0 -16px
-    padding: 0 24px 0 16px
-    position: relative
-    display: inline-grid
-    grid-row: row-1-start / row-2-end
-    grid-column: col-1-start / col-3-end
-    grid-template-rows: [row-1-start] 1fr [row-1-end row-2-start] max-content [row-2-end]
-    grid-template-columns: [col-1-start] max-content [col-1-end col-2-start] 1fr [col-2-end col-3-start] max-content [col-3-end]
+    &:has(.m-video),
+    &.has-leading-video
+      padding-left: 0
 
-%m-list-item-divider
-  @extend %m-stack-item-divider
+    .m-list-item-leading
+      @extend %m-list-item-leading
 
-%m-list-item-leading
-  @extend %m-stack-item-leading
+      > img
+        width: 56px
+        height: 56px
 
-%m-list-item-body
-  @extend %m-stack-item-body
+      > .m-avatar
+        width: 40px
+        height: 40px
 
-%m-list-item-leading
-  @extend %m-stack-item-leading
+      > .m-video
+        width: 114px
+        height: 64px
 
-%m-list-item-leading,
-%m-list-item-body,
-%m-list-item-trailing
-  padding-top: 8px
-  padding-bottom: 8px
+    .m-list-item-body
+      @extend %m-list-item-body
 
-%m-list-item-leading
-  @extend %m-stack-item-leading
+      > .m-typography
+        &.m-headline
+          @extend %m-typography-body-large
 
-%m-list-item-trailing
-  @extend %m-stack-item-trailing
+        &.m-body
+          @extend %m-typography-body-medium
 
-%m-list-item-body
-  @extend %m-stack-item-body
+    .m-list-item-trailing
+      @extend %m-list-item-trailing
 
-%m-list-item-trailing
-  @extend %m-stack-item-trailing
+      > .m-typography
+        &.m-label
+          @extend %m-typography-label-small
 
-%m-list-item-body
-  @extend %m-stack-item-body
+      > .m-icon
+        font-size: 20px
 
-  + %m-list-item-trailing
-    padding-left: 16px
+    &,
+    &.enabled
+      > .m-divider
+        border-color: rgb(var(--md-sys-color-surface-variant))
 
-%m-list-item-leading
-  @extend %m-stack-item-leading
+      .m-list-item-leading
+        > .m-icon
+          color: rgb(var(--md-sys-color-on-surface-variant))
 
-  + %m-list-item-body
-    padding-left: 16px
+        > .m-avatar
+          > .m-typography
+            &.m-label
+              background: rgb(var(--md-sys-color-primary-container))
+              color: rgb(var(--md-sys-color-on-primary-container))
+
+      .m-list-item-body
+        > .m-typography
+          &.m-headline
+            color: rgb(var(--md-sys-color-on-surface))
+
+          &.m-body
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+      .m-list-item-trailing
+        > .m-typography
+          &.m-label
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+        > .m-icon
+          color: rgb(var(--md-sys-color-on-surface-variant))
+
+    &:not(.is-not-interactive)
+      &:hover:not(.enabled):not(.focused):not(.pressed):not(.dragged):not(.disabled),
+      &.hovered
+        cursor: pointer
+
+        &::before
+          background: rgba(var(--md-sys-color-on-surface), 8%)
+
+        .m-list-item-leading
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+        .m-list-item-trailing
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+      &:focus:not(.enabled):not(.hovered):not(.pressed):not(.dragged):not(.disabled),
+      &.focused
+        &::before
+          background: rgba(var(--md-sys-color-on-surface), 12%)
+
+        .m-list-item-leading
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+        .m-list-item-trailing
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+      &:active:not(.enabled):not(.hovered):not(.focused):not(.dragged):not(.disabled),
+      &.pressed
+        &::before
+          background: rgba(var(--md-sys-color-on-surface), 12%)
+
+        .m-list-item-leading
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+        .m-list-item-trailing
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+      &.dragged:not(.enabled):not(.hovered):not(.focused):not(.pressed):not(.disabled)
+        box-shadow: shadow.high()
+
+        &::before
+          background: rgba(var(--md-sys-color-on-surface), 16%)
+
+        .m-list-item-leading
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+        .m-list-item-trailing
+          > .m-icon
+            color: rgb(var(--md-sys-color-on-surface-variant))
+
+    &:disabled:not(.hovered):not(.focused):not(.pressed):not(.dragged),
+    &[disabled]:not(.hovered):not(.focused):not(.pressed):not(.dragged),
+    &.disabled:not(.hovered):not(.focused):not(.pressed:not(.dragged))
+      cursor: not-allowed
+      pointer-events: all !important
+      box-shadow: shadow.none()
+      opacity: 38%
+
+      &::before
+        background: rgba(var(--md-sys-color-on-surface), 12%)
+
+      .m-list-item-leading
+        > .m-icon
+          color: rgba(var(--md-sys-color-on-surface), 38%)
+
+      .m-list-item-body
+        > .m-typography
+          &.m-headline
+            color: rgba(var(--md-sys-color-on-surface), 38%)
+
+          &.m-body
+            color: rgba(var(--md-sys-color-on-surface), 38%)
+
+      .m-list-item-trailing
+        > .m-typography
+          &.m-label
+            color: rgba(var(--md-sys-color-on-surface), 38%)
+
+        > .m-icon
+          color: rgba(var(--md-sys-color-on-surface), 38%)

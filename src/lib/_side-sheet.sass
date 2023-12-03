@@ -30,13 +30,28 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@Import './selection'
+@import '@/includes/side-sheet'
 
 .m-side-sheet
-  @extend %is-not-selectable
+  @extend %m-side-sheet
 
-  width: 200px
+  &.is-closed
+    @extend %m-side-sheet-is-closed
 
-  &:empty
-    width: 0
-    visibility: hidden
+  &.is-opened
+    @extend %m-side-sheet-is-opened
+
+  > .m-side-sheet-leading
+    @extend %m-side-sheet-leading
+
+  > .m-side-sheet-body
+    @extend %m-side-sheet-body
+
+  > .m-side-sheet-trailing
+    @extend %m-side-sheet-trailing
+
+  &.is-closed
+    @extend %m-side-sheet-is-closed
+
+  &.is-opened
+    @extend %m-side-sheet-is-opened

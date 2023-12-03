@@ -30,7 +30,20 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+@import '@/includes/block'
+
+.m-form
+  @extend %m-block-flow-column
+  flex: 1 0 0
+
 .m-fieldset
   margin: 0
   padding: 0
   border: none
+
+.m-field-input
+  text-overflow: ellipsis
+  border: 1px solid transparent
+  background: transparent
+  outline: none
+  color: rgb(var(--md-sys-color-on-surface))

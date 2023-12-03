@@ -30,30 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@use './adaptive'
-
-@import './bar'
+@import '@/includes/top-app-bar'
 
 .m-top-app-bar
-  @extend %m-bar-horizontal
-
-  @include adaptive.is-lt-medium
-    padding: 0 16px
-    height: 64px
-
-  @include adaptive.is-gt-small
-    padding: 0 24px
-    height: 72px
-
-  &:empty
-    height: 0
-    visibility: hidden
-
-  > .m-bar-leading
-    @extend %m-bar-horizontal-leading
-
-  > .m-bar-body
-    @extend %m-bar-horizontal-body
-
-  > .m-bar-trailing
-    @extend %m-bar-horizontal-trailing
+  @extend %m-top-app-bar

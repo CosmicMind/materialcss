@@ -30,9 +30,10 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@use './adaptive'
+@use '@/utils/adaptive'
 
-@import './selection'
+@import '@/includes/selection'
+
 @import './typography'
 @import './list'
 
@@ -56,8 +57,8 @@
       grid-auto-rows: minmax(64px, max-content)
 
     @include adaptive.is-gt-small
-      padding: 0 24px
-      grid-auto-rows: minmax(72px, max-content)
+      padding: 0 16px
+      grid-auto-rows: minmax(64px, max-content)
 
   > .m-drawer-leading
     grid-row: row-1-start / row-1-end
@@ -78,8 +79,7 @@
     grid-auto-rows: minmax(56px, max-content)
     grid-row: row-2-start / row-2-end
     align-content: start
-    overflow-x: hidden
-    overflow-y: scroll
+    overflow: hidden
 
     > .m-drawer-list
       @extend %m-list

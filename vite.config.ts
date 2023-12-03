@@ -38,67 +38,71 @@ import {
 import {
 	PluginOption,
 	LibraryFormats,
+	ConfigEnv,
 	defineConfig,
+	UserConfigExport,
 } from 'vite'
 
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
-const name = process.env.npm_package_name
-const srcDir = 'src'
-const entry = `${srcDir}/index.ts`
-const fileName = 'lib-[format]'
-const formats: LibraryFormats[] = [ 'es', 'cjs' ]
-const emptyOutDir = true
-const minify = false
+export default ({ mode }: ConfigEnv): UserConfigExport => {
+	const name = process.env.npm_package_name
+	const srcDir = 'src'
+	const entry = `${srcDir}/index.ts`
+	const fileName = 'lib-[format]'
+	const formats: LibraryFormats[] = [ 'es', 'cjs' ]
+	const emptyOutDir = true
+	const minify = 'development' !== mode
 
-const alias = {
-	'@': fileURLToPath(new URL(srcDir, import.meta.url)),
-}
-
-const staticTargets = [
-	{
-		src: `${srcDir}/lib/*`,
-		dest: './sass/lib',
-	},
-	{
-		src: `${srcDir}/themes/*`,
-		dest: './sass/themes',
-	},
-	{
-		src: `${srcDir}/_core.sass`,
-		dest: './sass',
+	const alias = {
+		'@': fileURLToPath(new URL(srcDir, import.meta.url)),
 	}
-]
 
-const plugins = [
-	viteStaticCopy({
-		targets: staticTargets,
-	})
-] as PluginOption[]
-
-export default defineConfig(() => ({
-	resolve: {
-		alias,
-	},
-	plugins,
-	build: {
-		minify,
-		emptyOutDir,
-		lib: {
-			name,
-			entry,
-			formats,
-			fileName,
+	const staticTargets = [
+		{
+			src: `${srcDir}/lib/*`,
+			dest: './sass/lib',
 		},
-		rollupOptions: {
-			output: {
-				assetFileNames: (info): string => {
-					if ('style.css' === info.name) {
-						return 'material.css'
-					}
-					return info.name || 'build-filename-undefined'
+		{
+			src: `${srcDir}/themes/*`,
+			dest: './sass/themes',
+		},
+		{
+			src: `${srcDir}/_core.sass`,
+			dest: './sass',
+		}
+	]
+
+	const plugins = [
+		viteStaticCopy({
+			targets: staticTargets,
+		})
+	] as PluginOption[]
+
+	return defineConfig({
+		resolve: {
+			alias,
+		},
+		plugins,
+		build: {
+			minify,
+			emptyOutDir,
+			lib: {
+				name,
+				entry,
+				formats,
+				fileName,
+			},
+			rollupOptions: {
+				output: {
+					assetFileNames: (info): string => {
+						if ('style.css' === info.name) {
+							return 'material.css'
+						}
+						return info.name || 'build-filename-undefined'
+					},
 				},
 			},
 		},
-	},
-}))
+	})
+}

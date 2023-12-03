@@ -30,11 +30,16 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import './selection'
+@import '@/includes/icon'
 
-.m-icon:not(.m-button)
-  @extend %is-not-selectable
+.m-icon
+  @extend %m-icon
 
-  display: flex
-  place-items: center
-  color: rgb(var(--md-sys-color-on-surface))
+  &.small
+    @extend %m-icon-small
+
+  &.medium
+    @extend %m-icon-medium
+
+  &.large
+    @extend %m-icon-large

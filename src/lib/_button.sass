@@ -30,21 +30,21 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@use './shadow'
+@use '@/utils/shadow'
 @use './elevation'
 
-@import './selection'
-@import './typography'
+@import '@/includes/alignment'
+@import '@/includes/block'
+@import '@/includes/selection'
+@import '@/includes/typography'
 
 %button
-  @extend %is-not-selectable
-  @extend %is-ellipsis
+  @extend %m-block-flow-row
+  @extend %m-place-content-center
+  @extend %m-place-items-center
 
   padding: 0
   position: relative
-  display: grid
-  grid-template-columns: [col-1-start] max-content [col-1-end col-2-start] 1fr [col-2-end]
-  place-items: center
   border: none
   outline: none
   background: transparent
@@ -207,7 +207,7 @@ a.m-button
       border-radius: 20px
 
     > .m-icon
-      font-size: 18px
+      font-size: 16px
       padding-left: 16px
 
       + .m-typography
@@ -332,11 +332,13 @@ a.m-button
       padding-left: 12px
 
       + .m-typography
+        &.m-title,
         &.m-label
           padding-left: 8px
           padding-right: 16px
 
     > .m-typography
+      &.m-title,
       &.m-label
         padding: 0 12px
 
@@ -346,6 +348,7 @@ a.m-button
         color: rgb(var(--md-sys-color-primary))
 
       > .m-typography
+        &.m-title,
         &.m-label
           color: rgb(var(--md-sys-color-primary))
 
@@ -371,13 +374,13 @@ a.m-button
         color: rgba(var(--md-sys-color-on-surface), 38%)
 
       > .m-typography
+        &.m-title,
         &.m-label
           color: rgba(var(--md-sys-color-on-surface), 38%)
 
   &.m-icon
     width: 48px
     height: 48px
-    grid-template-columns: [col-1-start] 1fr [col-1-end]
 
     &::before
       top: 4px
@@ -647,7 +650,6 @@ a.m-button
   &.m-fab
     width: 56px
     height: 56px
-    grid-template-columns: [col-1-start] 1fr [col-1-end]
     border-radius: 16px
 
     &::before

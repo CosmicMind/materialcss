@@ -30,22 +30,16 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-%is-not-selectable
-  -webkit-touch-callout: none
-  -webkit-user-select: none
-  -moz-user-select: none
-  -ms-user-select: none
-  user-select: none
+@import '@/includes/colors'
+@import '@/includes/selection'
 
-%is-selectable
-  -webkit-touch-callout: initial
-  -webkit-user-select: text
-  -moz-user-select: text
-  -ms-user-select: text
-  user-select: text
+*
+  ::selection
+    @extend %m-primary
+    @extend %m-on-primary
 
-%is-nowrap
-  white-space: nowrap
+.is-selectable
+  @extend %is-selectable
 
-%is-ellipsis
-  @extend %is-nowrap
+.is-not-selectable
+  @extend %is-not-selectable

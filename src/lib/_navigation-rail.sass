@@ -30,45 +30,53 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import './bar'
+@import '@/includes/selection'
+@import './typography'
 
 .m-navigation-rail
-  @extend %m-bar-vertical
+  @extend %is-not-selectable
 
-  > .m-rail-leading
-    @extend %m-bar-vertical-leading
-
-  > .m-rail-body
-    @extend %m-bar-vertical-body
-
-  > .m-rail-trailing
-    @extend %m-bar-vertical-trailing
+  position: relative
+  display: flex
+  flex: 1 0 0
+  flex-flow: column
+  align-items: center
 
   > .m-rail-leading,
   > .m-rail-body,
   > .m-rail-trailing
-    padding: 0 8px
-    grid-auto-rows: minmax(64px, max-content)
+    @extend %is-not-selectable
+
+    position: relative
+    display: flex
+    flex-flow: column
+    align-items: center
+
+  > .m-rail-leading,
+  > .m-rail-trailing
+    padding: 8px 0
+    gap: 8px
 
   > .m-rail-body
-    overflow-x: hidden
-    overflow-y: scroll
+    flex: 1 0 0
+    gap: 12px
+    overflow: hidden
 
     &,
     &.start
-      align-content: start
+      align-items: start
 
     &.center
-      align-content: center
+      align-items: center
 
     &.end
-      align-content: end
+      align-items: end
 
   .m-rail
     &.m-button
-      grid-template-rows: [row-1-start] 1fr [row-1-end row-2-start] max-content [row-2-end]
-      grid-template-columns: [col-1-start] 1fr [col-1-end]
+      flex-flow: column
       place-items: center
+      place-content: center
       gap: 4px
 
       &::before
@@ -95,6 +103,8 @@
       > .m-typography
         &.m-label
           @extend %m-typography-label-medium
+
+          grid-row: row-2-start / row-2-end
 
       &,
       &.enabled

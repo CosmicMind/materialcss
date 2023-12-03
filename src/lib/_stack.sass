@@ -31,50 +31,25 @@
  */
 
 
-@import './block'
+@import '@/includes/stack'
 
-%m-stack
-  @extend %m-block-flow-row
+.m-stack
+  @extend %m-stack
 
-  margin: 0
-  padding: 0
-  width: 100%
-  align-content: start;
-  justify-content: stretch;
+.m-stack-items
+  @extend %m-stack-items
 
-%m-stack-item
-  position: relative
-  display: grid
-  grid-template-rows: [row-1-start] 1fr [row-1-end row-2-start] max-content [row-2-end]
-  grid-template-columns: [col-1-start] max-content [col-1-end col-2-start] 1fr [col-2-end col-3-start] max-content [col-3-end]
-  list-style-type: none
-  border: none
-  outline: none
+.m-stack-item
+  @extend %m-stack-item
 
-%m-stack-item-divider
-  grid-row: row-2-start / row-2-end
-  grid-column: col-1-start / col-3-end
+.m-stack-item-divider
+  @extend %m-stack-item-divider
 
-%m-stack-item-leading,
-%m-stack-item-body,
-%m-stack-item-trailing
-  @extend %m-align-content-center
-  @extend %m-justify-content-stretch
+.m-stack-item-leading
+  @extend %m-stack-item-leading
 
-  grid-row: row-1-start / row-1-end
+.m-stack-item-body
+  @extend %m-stack-item-body
 
-%m-stack-item-leading,
-%m-stack-item-trailing
-  @extend %m-block-flow-column
-
-%m-stack-item-body
-  @extend %m-block-flow-row
-
-%m-stack-item-leading
-  grid-column: col-1-start / col-1-end
-
-%m-stack-item-body
-  grid-column: col-2-start / col-2-end
-
-%m-stack-item-trailing
-  grid-column: col-3-start / col-3-end
+.m-stack-item-trailing
+  @extend %m-stack-item-trailing
