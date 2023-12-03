@@ -39,6 +39,7 @@
   padding: 0;
   font-style: normal;
   font-weight: 400;
+  vertical-align: baseline;
   color: rgb(var(--md-sys-color-on-surface));
 }
 
@@ -50,13 +51,9 @@
   display: block;
 }
 
-%m-typography-display,
-%m-typography-headline,
-%m-typography-title,
 %m-typography-label,
-%m-typography-body,
 %m-typography-link {
-  vertical-align: baseline;
+  display: inline-block;
 }
 
 %m-typography-display-large {
@@ -144,8 +141,7 @@
 }
 
 %m-typography-link {
-  @extend %m-primary-text;
-
+  color: rgb(var(--md-sys-color-primary));
   text-decoration: underline;
   cursor: pointer;
 }

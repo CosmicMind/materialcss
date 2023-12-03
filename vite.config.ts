@@ -97,7 +97,7 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
 				output: {
 					assetFileNames: (info): string => {
 						if ('style.css' === info.name) {
-							return 'material.css'
+							return minify ? 'material.min.css' : 'material.css'
 						}
 						return info.name || 'build-filename-undefined'
 					},
