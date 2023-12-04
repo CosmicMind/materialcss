@@ -30,13 +30,12 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@import '@/includes/colors'
 @import '@/includes/selection'
 
 *
   ::selection
-    @extend %m-primary
-    @extend %m-on-primary
+    background-color: rgb(var(--md-sys-color-primary))
+    color: rgb(var(--md-sys-color-on-primary))
 
 .is-selectable
   @extend %is-selectable
