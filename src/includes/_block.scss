@@ -32,7 +32,7 @@
 
 @import '@/includes/selection';
 
-%m-block {
+%m-block-row {
   @extend %is-not-selectable;
 
   display: flex;
@@ -40,12 +40,12 @@
   flex-wrap: nowrap;
 }
 
-%m-block-flow-row {
-  @extend %m-block;
+%m-block-row {
+  @extend %m-block-row;
 }
 
-%m-block-flow-column {
-  @extend %m-block;
+%m-block-column {
+  @extend %m-block-row;
 
   flex-flow: column;
 }

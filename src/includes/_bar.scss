@@ -33,7 +33,7 @@
 @import '@/includes/block';
 
 %m-bar-horizontal {
-  @extend %m-block-flow-row;
+  @extend %m-block-row;
 
   align-items: center;
 }
@@ -41,7 +41,7 @@
 %m-bar-horizontal-leading,
 %m-bar-horizontal-body,
 %m-bar-horizontal-trailing {
-  @extend %m-block-flow-row;
+  @extend %m-block-row;
 
   align-items: center;
 }
@@ -65,7 +65,7 @@
 }
 
 %m-bar-vertical {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   flex: 1 0 0;
   align-items: center;
@@ -74,7 +74,7 @@
 %m-bar-vertical-leading,
 %m-bar-vertical-body,
 %m-bar-vertical-trailing {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   align-items: center;
 }

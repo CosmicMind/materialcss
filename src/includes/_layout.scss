@@ -46,7 +46,7 @@
 %m-tile,
 %m-tile-stacks,
 %m-stack {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   width: 100%;
   z-index: 1;
@@ -121,7 +121,7 @@
 }
 
 %m-column {
-  @extend %m-block-flow-row;
+  @extend %m-block-row;
 
   z-index: 0;
 

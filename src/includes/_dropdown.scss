@@ -37,18 +37,18 @@
 @import '@/includes/block';
 
 %m-dropdown {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   position: relative;
   place-items: center;
 }
 
 %m-dropdown-leading {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 }
 
 %m-dropdown-body {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
   @extend %m-surface-container;
 
   position: absolute;

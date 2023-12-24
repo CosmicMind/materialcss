@@ -33,19 +33,19 @@
 @import '@/includes/block';
 
 %m-stack {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   position: relative;
 }
 
 %m-stack-items {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   position: relative;
 }
 
 %m-stack-item {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   position: relative;
 }
@@ -57,18 +57,18 @@
 }
 
 %m-stack-item-divider {
-  @extend %m-block-flow-row;
+  @extend %m-block-row;
 }
 
 %m-stack-item-leading,
 %m-stack-item-trailing {
-  @extend %m-block-flow-row;
+  @extend %m-block-row;
 
   align-content: center;
 }
 
 %m-stack-item-body {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   align-content: start;
   justify-content: center;

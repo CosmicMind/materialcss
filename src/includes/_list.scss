@@ -33,7 +33,7 @@
 @import '@/includes/block';
 
 %m-list {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   margin: 0;
   padding: 0;
@@ -50,7 +50,7 @@
 }
 
 %m-list-item {
-  @extend %m-block-flow-row;
+  @extend %m-block-row;
 
   padding: 0 24px 0 16px;
   position: relative;
@@ -75,7 +75,7 @@
 %m-list-item-leading,
 %m-list-item-trailing,
 %m-list-item-body {
-  @extend %m-block-flow-row;
+  @extend %m-block-row;
 
   position: relative;
 }
@@ -92,7 +92,7 @@
 }
 
 %m-list-item-body {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
 
   flex: 1 0 0;
   align-content: start;
@@ -104,5 +104,5 @@
 }
 
 %m-list-item-divider {
-  @extend %m-block-flow-row;
+  @extend %m-block-row;
 }

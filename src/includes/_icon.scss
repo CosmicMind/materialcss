@@ -35,7 +35,7 @@
 
 %m-icon {
   &:not(.m-button) {
-    @extend %m-block-flow-column;
+    @extend %m-block-column;
     @extend %m-on-surface-text;
 
     place-content: center;

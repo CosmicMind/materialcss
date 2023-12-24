@@ -37,7 +37,7 @@
 @import '@/lib/typography';
 
 %m-avatar {
-  @extend %m-block-flow-column;
+  @extend %m-block-column;
   @extend %m-place-content-center;
   @extend %m-primary-container;
   @extend %m-on-primary-container-text;
