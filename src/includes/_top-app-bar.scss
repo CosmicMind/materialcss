@@ -30,17 +30,12 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-@use '@/utils/conversion';
-
 @import '@/includes/bar';
-
-$m-top-app-bar-height-value: 64;
-$m-top-app-bar-height: conversion.to-px($m-top-app-bar-height-value);
 
 %m-top-app-bar {
   @extend %m-bar-horizontal;
 
-  height: $m-top-app-bar-height;
+  height: 64px;
 
   &:empty {
     height: 0;
