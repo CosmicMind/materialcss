@@ -41,20 +41,20 @@
   list-style: none;
 
   &:first-of-type {
-    padding-top: 8px;
+    padding-top: 0.5rem;
   }
 
   &:last-of-type {
-    padding-bottom: 8px;
+    padding-bottom: 0.5rem;
   }
 }
 
 %m-list-item {
   @extend %m-block-row;
 
-  padding: 0 24px 0 16px;
+  padding: 01.5rem 0 1rem;
   position: relative;
-  min-height: 32px;
+  min-height: 2rem;
 
   &:not(.is-not-interactive) {
     cursor: pointer;
@@ -87,7 +87,7 @@
 
 %m-list-item-leading {
   + %m-list-item-body {
-    padding-left: 16px;
+    padding-left: 1rem;
   }
 }
 
@@ -100,7 +100,7 @@
 }
 
 %m-list-item-trailing {
-  padding-left: 16px;
+  padding-left: 1rem;
 }
 
 %m-list-item-divider {

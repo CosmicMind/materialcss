@@ -35,7 +35,7 @@
 
 %m-text-field
   display: grid
-  grid-template-rows: [row-1-start] 56px [row-1-end row-2-start] max-content [row-2-end]
+  grid-template-rows: [row-1-start] 3.5rem [row-1-end row-2-start] max-content [row-2-end]
   grid-template-columns: [col-1-start] 1fr [col-1-end]
 
 %m-text-field-control
@@ -64,17 +64,17 @@
   z-index: 1
 
 %m-text-field-leading
-  padding-left: 12px
+  padding-left: 0.75rem
   grid-row: row-1-start / row-1-end
   grid-column: col-1-start / col-1-end
 
 %m-text-field-trailing
-  padding-right: 12px
+  padding-right: 0.75rem
   grid-row: row-1-start / row-1-end
   grid-column: col-3-start / col-3-end
 
 %m-text-field-body
-  padding: 0 16px
+  padding: 0 1rem
   display: grid
   grid-row: row-1-start / row-1-end
   grid-column: col-2-start / col-2-end
@@ -109,17 +109,17 @@
   grid-column: col-2-start / col-2-end
 
 %m-text-field-body-prefix
-  padding-right: 4px
+  padding-right: 0.25rem
   grid-row: row-2-start / row-2-end
   grid-column: col-1-start / col-1-end
 
 %m-text-field-body-suffix
-  padding-left: 4px
+  padding-left: 0.25rem
   grid-row: row-2-start / row-2-end
   grid-column: col-3-start / col-3-end
 
 %m-text-field-support
-  padding: 4px 16px 0
+  padding: 0.25rem 1rem 0
   display: grid
   grid-row: row-2-start / row-2-end
   grid-column: col-1-start / col-1-end
@@ -134,5 +134,5 @@
   grid-column: col-1-start / col-1-end
 
 %m-text-field-support-label
-  padding-left: 16px
+  padding-left: 1rem
   grid-column: col-2-start / col-2-end

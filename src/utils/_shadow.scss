@@ -43,13 +43,13 @@
 }
 
 @function base() {
-  @return 0px 4px 8px 3px rgba(var(--md-sys-color-scrim), 0.15), 0px 1px 3px rgba(var(--md-sys-color-scrim), 0.3);
+  @return 0px0.25rem 0.5rem 3px rgba(var(--md-sys-color-scrim), 0.15), 0px 1px 3px rgba(var(--md-sys-color-scrim), 0.3);
 }
 
 @function high() {
-  @return 0px 6px 10px 4px rgba(var(--md-sys-color-scrim), 0.15), 0px 2px 3px rgba(var(--md-sys-color-scrim), 0.3);
+  @return 0px 6px 10px0.25rem rgba(var(--md-sys-color-scrim), 0.15), 0px 2px 3px rgba(var(--md-sys-color-scrim), 0.3);
 }
 
 @function highest() {
-  @return 0px 8px 12px 6px rgba(var(--md-sys-color-scrim), 0.15), 0px 4px 4px rgba(var(--md-sys-color-scrim), 0.3);
+  @return 0px 0.5rem 0.75rem 6px rgba(var(--md-sys-color-scrim), 0.15), 0px0.25rem0.25rem rgba(var(--md-sys-color-scrim), 0.3);
 }

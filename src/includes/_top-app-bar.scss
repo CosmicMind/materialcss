@@ -35,7 +35,7 @@
 %m-top-app-bar {
   @extend %m-bar-horizontal;
 
-  height: 64px;
+  height: 4rem;
 
   &:empty {
     height: 0;
