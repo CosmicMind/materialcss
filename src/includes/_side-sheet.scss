@@ -44,7 +44,7 @@ $m-side-sheet-is-opened-width: conversion.to-px($m-side-sheet-is-opened-width-va
 %m-side-sheet {
   @extend %m-bar-vertical;
 
-  @include adaptive.is-gt-medium {
+  @include adaptive.is-gte-large {
     visibility: visible;
   }
 }

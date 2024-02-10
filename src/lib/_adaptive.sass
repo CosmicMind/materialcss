@@ -66,7 +66,7 @@ $max-expanded-width: conversion.to-px($max-expanded-width-value)
   @media (max-width: $compact-width)
     @content
 
-@mixin is-gt-compact
+@mixin is-gte-small
   @media (min-width: $min-small-width)
     @content
 
@@ -74,11 +74,11 @@ $max-expanded-width: conversion.to-px($max-expanded-width-value)
   @media (min-width: $min-small-width) and (max-width: $max-small-width)
     @content
 
-@mixin is-gt-small
+@mixin is-gte-medium
   @media (min-width: $min-medium-width)
     @content
 
-@mixin is-lt-medium
+@mixin is-lte-small
   @media (max-width: $max-small-width)
     @content
 
@@ -86,11 +86,11 @@ $max-expanded-width: conversion.to-px($max-expanded-width-value)
   @media (min-width: $min-medium-width) and (max-width: $max-medium-width)
     @content
 
-@mixin is-gt-medium
+@mixin is-gte-large
   @media (min-width: $min-large-width)
     @content
 
-@mixin is-lt-large
+@mixin is-lte-medium
   @media (max-width: $max-medium-width)
     @content
 
@@ -98,11 +98,11 @@ $max-expanded-width: conversion.to-px($max-expanded-width-value)
   @media (min-width: $min-large-width) and (max-width: $max-large-width)
     @content
 
-@mixin is-gt-large
+@mixin is-gte-expanded
   @media (min-width: $min-expanded-width)
     @content
 
-@mixin is-lt-expanded
+@mixin is-lte-large
   @media (max-width: $max-large-width)
     @content
 

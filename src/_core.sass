@@ -101,42 +101,42 @@
   display: none !important
 
 @include adaptive.is-compact
-  .adaptive-is-gt-compact,
+  .adaptive-is-gte-small,
   .adaptive-is-small,
-  .adaptive-is-gt-small,
+  .adaptive-is-gte-medium,
   .adaptive-is-medium,
-  .adaptive-is-gt-medium,
+  .adaptive-is-gte-large,
   .adaptive-is-large,
-  .adaptive-is-gt-large,
+  .adaptive-is-gte-expanded,
   .adaptive-is-expanded
     display: none !important
 
-@include adaptive.is-gt-compact
+@include adaptive.is-gte-small
   .adaptive-is-compact
     display: none !important
 
 @include adaptive.is-small
   .adaptive-is-compact,
   .adaptive-is-lt-small,
-  .adaptive-is-gt-small,
+  .adaptive-is-gte-medium,
   .adaptive-is-medium,
-  .adaptive-is-gt-medium,
+  .adaptive-is-gte-large,
   .adaptive-is-large,
-  .adaptive-is-gt-large,
+  .adaptive-is-gte-expanded,
   .adaptive-is-expanded
     display: none !important
 
-@include adaptive.is-gt-small
+@include adaptive.is-gte-medium
   .adaptive-is-compact,
   .adaptive-is-lt-small,
   .adaptive-is-small
     display: none !important
 
-@include adaptive.is-lt-medium
+@include adaptive.is-lte-small
   .adaptive-is-medium,
-  .adaptive-is-gt-medium,
+  .adaptive-is-gte-large,
   .adaptive-is-large,
-  .adaptive-is-gt-large,
+  .adaptive-is-gte-expanded,
   .adaptive-is-expanded
     display: none !important
 
@@ -145,13 +145,13 @@
   .adaptive-is-lt-small,
   .adaptive-is-small,
   .adaptive-lt-medium,
-  .adaptive-is-gt-medium,
+  .adaptive-is-gte-large,
   .adaptive-is-large,
-  .adaptive-is-gt-large,
+  .adaptive-is-gte-expanded,
   .adaptive-is-expanded
     display: none !important
 
-@include adaptive.is-gt-medium
+@include adaptive.is-gte-large
   .adaptive-is-compact,
   .adaptive-is-lt-small,
   .adaptive-is-small,
@@ -159,9 +159,9 @@
   .adaptive-is-medium
     display: none !important
 
-@include adaptive.is-lt-large
+@include adaptive.is-lte-medium
   .adaptive-is-large,
-  .adaptive-is-gt-large,
+  .adaptive-is-gte-expanded,
   .adaptive-is-expanded
     display: none !important
 
@@ -171,22 +171,22 @@
   .adaptive-is-small,
   .adaptive-lt-medium,
   .adaptive-is-medium,
-  .adaptive-is-lt-large,
-  .adaptive-is-gt-large,
+  .adaptive-is-lte-medium,
+  .adaptive-is-gte-expanded,
   .adaptive-is-expanded
     display: none !important
 
-@include adaptive.is-gt-large
+@include adaptive.is-gte-expanded
   .adaptive-is-compact,
   .adaptive-is-lt-small,
   .adaptive-is-small,
   .adaptive-lt-medium,
   .adaptive-is-medium,
-  .adaptive-is-lt-large,
+  .adaptive-is-lte-medium,
   .adaptive-is-large
     display: none !important
 
-@include adaptive.is-lt-expanded
+@include adaptive.is-lte-large
   .adaptive-is-expanded
     display: none !important
 
@@ -196,7 +196,7 @@
   .adaptive-is-small,
   .adaptive-lt-medium,
   .adaptive-is-medium,
-  .adaptive-is-lt-large,
+  .adaptive-is-lte-medium,
   .adaptive-is-large,
   .adaptive-lt-expanded
     display: none !important

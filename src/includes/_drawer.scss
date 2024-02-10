@@ -44,7 +44,7 @@ $m-drawer-is-opened-width: conversion.to-px($m-drawer-is-opened-width-value);
 %m-drawer {
   @extend %m-bar-vertical;
 
-  @include adaptive.is-gt-medium {
+  @include adaptive.is-gte-large {
     visibility: visible;
   }
 }
