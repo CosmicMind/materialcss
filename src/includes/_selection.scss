@@ -30,7 +30,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-%is-not-selectable {
+%m-is-not-selectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -38,7 +38,7 @@
   user-select: none;
 }
 
-%is-selectable {
+%m-is-selectable {
   -webkit-touch-callout: initial;
   -webkit-user-select: text;
   -moz-user-select: text;

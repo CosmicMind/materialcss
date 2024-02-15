@@ -33,7 +33,7 @@
 @import '@/includes/selection';
 
 %m-block-row {
-  @extend %is-not-selectable;
+  @extend %m-is-not-selectable;
 
   display: flex;
   flex-flow: row;

@@ -113,7 +113,7 @@
 }
 
 %m-row-columns {
-  @extend %is-not-selectable;
+  @extend %m-is-not-selectable;
 
   display: grid;
   grid-auto-flow: column;

@@ -33,7 +33,7 @@
 @import '@/includes/selection';
 
 %m-typography {
-  @extend %is-selectable;
+  @extend %m-is-selectable;
 
   margin: 0;
   padding: 0;
