@@ -56,6 +56,7 @@ $m-drawer-is-opened-width: conversion.to-px($m-drawer-is-opened-width-value);
 %m-drawer-body {
   @extend %m-bar-vertical-body;
 
+  overflow: hidden;
   overflow-y: scroll;
 }
 
